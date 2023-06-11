@@ -1,0 +1,84 @@
+{
+  "users": [
+    {
+      "id": 12345,
+      "password": "password",
+      "name": "Ramiro",
+      "email": "ramiro@gmail.com",
+      "mobile": "110929022202",
+      "enabled": true
+    },
+    {
+      "id": 67890,
+      "password": "password",
+      "name": "Laura",
+      "email": "laura@gmail.com",
+      "mobile": "120839041605",
+      "enabled": true
+    },
+    {
+      "id": 23456,
+      "password": "password",
+      "name": "Juan",
+      "email": "juan@gmail.com",
+      "mobile": "130748060008",
+      "enabled": true
+    },
+    {
+      "id": 78901,
+      "password": "password",
+      "name": "Maria",
+      "email": "maria@gmail.com",
+      "mobile": "140657079401",
+      "enabled": true
+    },
+    {
+      "id": 34567,
+      "password": "password",
+      "name": "Carlos",
+      "email": "carlos@gmail.com",
+      "mobile": "150566098804",
+      "enabled": true
+    },
+    {
+      "id": 89012,
+      "password": "password",
+      "name": "Ana",
+      "email": "ana@gmail.com",
+      "mobile": "160475118207",
+      "enabled": true
+    },
+    {
+      "id": 45678,
+      "password": "password",
+      "name": "Javier",
+      "email": "javier@gmail.com",
+      "mobile": "170384137610",
+      "enabled": true
+    },
+    {
+      "id": 90123,
+      "password": "password",
+      "name": "Paola",
+      "email": "paola@gmail.com",
+      "mobile": "180293157013",
+      "enabled": true
+    },
+    {
+      "id": 56789,
+      "password": "password",
+      "name": "Luis",
+      "email": "luis@gmail.com",
+      "mobile": "190202176416",
+      "enabled": true
+    },
+    {
+      "id": 23451,
+      "password": "password",
+      "name": "Sara",
+      "email": "sara@gmail.com",
+      "mobile": "200111195819",
+      "enabled": true
+    }
+  ]
+}
