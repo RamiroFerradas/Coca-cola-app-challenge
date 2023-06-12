@@ -1,19 +1,23 @@
-"use client";
-
 import { useLayoutEffect, useState } from "react";
 
-type Props = {};
 function useScreen() {
   const [mobileScreen, setMobileScreen] = useState(false);
 
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const handleResize = () => {
+    const isMobile = window.innerWidth < 1200;
+    setMobileScreen(isMobile);
+  };
+
   useLayoutEffect(() => {
-    if (!isMobile) {
-      setMobileScreen(false);
-    } else {
-      setMobileScreen(true);
-    }
-  }, [isMobile]);
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return { mobileScreen };
 }
+
 export default useScreen;

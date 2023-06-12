@@ -7,7 +7,7 @@ export async function getUsers(): Promise<User[]> {
       throw new Error("Error fetching users");
     }
     const data = await response.json();
-    console.log(data);
+
     return data;
   } catch (error) {
     console.error("Error fetching users:", error);
