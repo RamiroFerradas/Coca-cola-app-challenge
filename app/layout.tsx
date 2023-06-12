@@ -1,3 +1,5 @@
+import Appbar from "./components/appbar/Appbar";
+import { AuthProvider } from "./context/authClientContext";
 import LayoutPages from "./layoutPages";
 import "./tailwind.globals.css";
 import { Inter } from "next/font/google";
@@ -17,7 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <LayoutPages>{children}</LayoutPages>
+        <LayoutPages>
+          <AuthProvider>
+            <main className="">
+              {children}
+              <Appbar />
+            </main>
+          </AuthProvider>
+        </LayoutPages>
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
 "use client";
+import Appbar from "./components/appbar/Appbar";
 import { useScreen } from "./hooks";
 
 function LayoutPages({ children }: { children: React.ReactNode }) {
@@ -10,4 +11,5 @@ function LayoutPages({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
 export default LayoutPages;

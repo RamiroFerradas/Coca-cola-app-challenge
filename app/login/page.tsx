@@ -1,33 +1,11 @@
 "use client";
-import { useState } from "react";
 import OtpInput from "react18-input-otp";
-import { User } from "../models/User";
-import { useFetchUsers } from "../hooks";
-import { useRouter } from "next/navigation";
-import { QrScann } from "./components/QrScann";
+import { useAuth } from "../context/authClientContext";
+import QrScann from "./components/QrScann/QrScann";
 
 export default function Login() {
-  const router = useRouter();
-  const { users, loading } = useFetchUsers();
-  const [userAuth, setUserAuth] = useState([]);
-  const [password, setPassword] = useState(0);
-  const [error, setError] = useState("");
-
-  const validateUser = (code: number) => {
-    setError("");
-    setPassword(code);
-
-    const user: User[] = users.filter((user) => user.id === code);
-    if (user.length && user[0].id === code) {
-      setUserAuth(userAuth);
-      router.push("/clients");
-    } else {
-      if (password.toString().length === 5) {
-        setUserAuth([]);
-        setError("El codigo ingresado no pertenece a ningun usuario");
-      }
-    }
-  };
+  const { userAuth, password, error, validateUser, loading, isAuthenticated } =
+    useAuth();
 
   const handleChange = (enteredOtp: string) => {
     const code = parseInt(enteredOtp);
@@ -35,7 +13,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start w-screen min-h-screen bg-gray-200 p-10 gap-10">
+    <div className="flex flex-col items-center justify-start w-screen bg-gray-200 p-10 gap-10 h-[94.5vh]">
       {!loading ? (
         <>
           <div
@@ -50,12 +28,13 @@ export default function Login() {
                   ? `border-red-600`
                   : userAuth.length
                   ? `border-green-600`
-                  : `border-gray-600
-           `
+                  : `border-gray-600`
               } flex-col`}
             >
               <OtpInput
-                value={password as any}
+                value={
+                  isAuthenticated ? userAuth[0].password : (password as any)
+                }
                 onChange={handleChange}
                 numInputs={5}
                 separator={<span> - </span>}

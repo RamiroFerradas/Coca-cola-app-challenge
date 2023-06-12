@@ -29,7 +29,7 @@ const useLocalStorage = <T,>(
     } else {
       setStoredValue(initialValue);
     }
-  }, [key, initialValue]);
+  }, [key]);
 
   return [storedValue, setValue];
 };

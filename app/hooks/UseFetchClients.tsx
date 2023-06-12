@@ -1,18 +1,31 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getClients } from "../services/clients";
+import { getClientById, getClients } from "../services/clients";
 import { Client } from "../models/Client";
 
-const UseFetchClients = () => {
+const UseFetchClients = (id?: number) => {
+  const initialClient: Client = {
+    id: 0,
+    name: "",
+    channel: "",
+    gec: "",
+    address: "",
+    enabled: false,
+  };
   const [clients, setClients] = useState<Client[]>([]);
+  const [client, setClient] = useState<Client>(initialClient);
   const [loading, setLoading] = useState(false);
 
   const fetchClients = async () => {
     try {
       setLoading(true);
-      const res = await getClients();
-
-      setClients(res);
+      if (id) {
+        const fetchedClient = await getClientById(id);
+        setClient(fetchedClient as any);
+      } else {
+        const fetchedClients = await getClients();
+        setClients(fetchedClients);
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -24,7 +37,7 @@ const UseFetchClients = () => {
     fetchClients();
   }, []);
 
-  return { clients, loading };
+  return { clients, loading, client };
 };
 
 export default UseFetchClients;
