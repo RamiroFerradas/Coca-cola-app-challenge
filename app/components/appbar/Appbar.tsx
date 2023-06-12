@@ -16,7 +16,7 @@ export default function Appbar() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  console.log(value);
+
   return (
     <Tabs
       className="fixed bottom-0 bg-gray-300 text-center flex m-auto items-center justify-center w-screen gap-4"
