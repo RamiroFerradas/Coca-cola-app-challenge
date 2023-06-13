@@ -24,7 +24,7 @@ export default function RootLayout({
           <AuthProvider>
             <main className="">
               <Navbar />
-              {children}
+              <div className="pt-20">{children}</div>
               <Appbar />
             </main>
           </AuthProvider>

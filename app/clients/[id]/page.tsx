@@ -17,7 +17,6 @@ export default function ClientDetail({}: Props) {
     setOpen(!open);
   };
 
-  console.log(client);
   const values = {
     id: client.id,
     cliente: client.name,
