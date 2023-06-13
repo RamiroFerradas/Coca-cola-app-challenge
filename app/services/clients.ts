@@ -1,7 +1,6 @@
 import { Client } from "../models/Client";
-const { NEXT_PUBLIC_API_BASE_URL } = process.env;
 
-const URL = NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000/api";
+const URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000/api";
 
 export async function getClients(): Promise<Client[]> {
   try {
