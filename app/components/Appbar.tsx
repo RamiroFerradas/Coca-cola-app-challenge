@@ -22,6 +22,22 @@ export default function Appbar() {
       value={value}
       onChange={handleChange}
       aria-label="icon tabs example"
+      centered
+      TabIndicatorProps={{
+        style: {
+          backgroundColor: "#ff3434",
+          height: "5px", // Ajusta el grosor del indicador aquí
+        },
+      }}
+      textColor="inherit"
+
+      // indicator={{
+      //   style: {
+      //     backgroundColor: "#ff3434",
+      //   },
+      // }}
+      // indicatorColor="secondary"
+      // textColor="primary"
     >
       <Tab
         icon={<LoginIcon />}
