@@ -7,7 +7,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { UseFetchClients } from "../hooks";
+import { useFetchClients } from "../hooks";
 import { Client } from "../models/Client";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
@@ -15,7 +15,7 @@ import { useState } from "react";
 
 export default function Clients() {
   const router = useRouter();
-  const { clients } = UseFetchClients();
+  const { clients } = useFetchClients();
 
   const [searchCLient, setSearchCLient] = useState("");
 
@@ -39,11 +39,11 @@ export default function Clients() {
       </div>
       <nav aria-label="main mailbox folders">
         <List>
-          {filteredClients.map((client: Client, i) => (
+          {filteredClients.map((client: Client) => (
             <ListItem
               className="border border-gray-900 my-1 rounded-md"
               disablePadding
-              key={i}
+              key={client.id}
               onClick={() => router.push(`/clients/${client.id}`)}
             >
               <ListItemButton>

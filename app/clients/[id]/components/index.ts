@@ -1,5 +1,5 @@
-export { default as exchange } from "./exchange";
+export { default as Exchange } from "./exchange";
 export * from "./index";
-export { default as misiones } from "./misiones";
-export { default as promotions } from "./promotions";
-export { default as resumen } from "./resumen";
+export { default as Misiones } from "./misiones";
+export { default as Promotions } from "./promotions";
+export { default as Unmissables } from "./unmissables";

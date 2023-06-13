@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Client } from "../models/Client";
 import { fetchData, getClientById } from "../services";
 
-const UseFetchClients = (id?: number) => {
+export default function useFetchClients(id?: number) {
   const initialClient: Client = {
     id: 0,
     name: "",
@@ -38,6 +38,4 @@ const UseFetchClients = (id?: number) => {
   }, []);
 
   return { clients, loading, client };
-};
-
-export default UseFetchClients;
+}

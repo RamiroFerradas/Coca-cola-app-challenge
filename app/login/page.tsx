@@ -13,7 +13,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start w-screen bg-gray-200 p-10 gap-10">
+    <div className="flex flex-col items-center justify-start w-screen p-10 gap-10">
       {!loading ? (
         <>
           <div

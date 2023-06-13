@@ -2,17 +2,25 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "../services/fetchData";
 import { Product } from "../models/Product";
+import { Mission } from "../models/Mission";
+import { Unmissable } from "../models/Unmissable";
 
-function useFetchProducts() {
+export default function useFetchProducts() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [missionss, setMissionss] = useState<Mission[]>([]);
+  const [unmissables, setUnmissables] = useState<Unmissable[]>([]);
   const [loading, setLoading] = useState(false);
 
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const res = await fetchData(`products`);
+      const products = await fetchData(`products`);
+      const missions = await fetchData(`products/missions`);
+      const unmissables = await fetchData(`products/unmissables`);
 
-      setProducts(res);
+      setProducts(products);
+      setMissionss(missions);
+      setUnmissables(unmissables);
     } catch (error) {
       console.log(error);
     } finally {
@@ -24,7 +32,5 @@ function useFetchProducts() {
     fetchProducts();
   }, []);
 
-  return { products, loading };
+  return { products, loading, missionss, unmissables };
 }
-
-export default useFetchProducts;

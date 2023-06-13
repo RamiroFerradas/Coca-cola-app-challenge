@@ -1,7 +1,7 @@
 "use client";
 import { useLayoutEffect, useState } from "react";
 
-function useScreen() {
+export default function useScreen() {
   const [mobileScreen, setMobileScreen] = useState(false);
 
   const handleResize = () => {
@@ -20,5 +20,3 @@ function useScreen() {
 
   return { mobileScreen };
 }
-
-export default useScreen;

@@ -1,6 +1,6 @@
-export { default as UseFetchClients } from "./UseFetchClients";
 export * from "./index";
-export * from "./useFetchProducts";
+export { default as useFetchClients } from "./useFetchClients";
+export { default as useFetchProducts } from "./useFetchProducts";
 export { default as useFetchUsers } from "./useFetchUsers";
 export { default as useLocalStorage } from "./useLocalStorage";
 export { default as useScreen } from "./useScreen";

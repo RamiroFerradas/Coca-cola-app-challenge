@@ -1,21 +1,21 @@
-import { Product } from "@/app/models/Product";
+import { Mission } from "@/app/models/Mission";
 import {
   TableContainer,
   Paper,
   Table,
-  TableHead,
   TableRow,
   TableCell,
   TableBody,
+  TableHead,
 } from "@mui/material";
 
 type Props = {
-  products: Product[];
+  missionss: Mission[];
 };
-export default function Misiones({ products }: Props) {
+export default function Misiones({ missionss }: Props) {
   return (
     <>
-      <p className="font-bold text-sm text-center">IMPERDIBLES</p>
+      <p className="font-bold text-sm text-center">MISIONES</p>
 
       <TableContainer component={Paper}>
         <Table
@@ -24,17 +24,15 @@ export default function Misiones({ products }: Props) {
           size="small"
           aria-label="a dense table"
         >
-          {/* <TableHead>
+          <TableHead>
             <TableRow>
               <TableCell align="center">SKU</TableCell>
               <TableCell align="center">Detalle</TableCell>
-              <TableCell className="opacity-0" align="center">
-                Cantidad
-              </TableCell>
+              <TableCell align="center">Cantidad</TableCell>
             </TableRow>
-          </TableHead> */}
+          </TableHead>
           <TableBody className="w-screen">
-            {products.slice(0, 6).map((row) => (
+            {missionss.slice(0, 6).map((row) => (
               <TableRow
                 key={row.SKU}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -44,6 +42,9 @@ export default function Misiones({ products }: Props) {
                 </TableCell>
                 <TableCell size="small" align="left">
                   {row.detalle}
+                </TableCell>
+                <TableCell size="small" align="center">
+                  {row.quantity}
                 </TableCell>
               </TableRow>
             ))}

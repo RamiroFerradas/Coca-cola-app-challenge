@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { User } from "../models/User";
 import { fetchData } from "../services";
 
-function useFetchUsers() {
+export default function useFetchUsers() {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -26,5 +26,3 @@ function useFetchUsers() {
 
   return { users, loading };
 }
-
-export default useFetchUsers;

@@ -1,24 +1,16 @@
 "use client";
-import { UseFetchClients } from "@/app/hooks";
+import { useFetchClients } from "@/app/hooks";
 import useFetchProducts from "@/app/hooks/useFetchProducts";
 import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { useParams } from "next/navigation";
 import { useState } from "react";
-import Resumen from "./components/resumen";
-import Misiones from "./components/misiones";
-import Promotions from "./components/promotions";
-import Exchange from "./components/exchange";
+import { Unmissables, Misiones, Promotions, Exchange } from "./components";
 
 type Props = {};
 export default function ClientDetail({}: Props) {
   const { id } = useParams();
 
-  const { client } = UseFetchClients(parseInt(id));
-  const [open, setOpen] = useState(false);
-  const handleClick = () => {
-    setOpen(!open);
-  };
-
+  const { client } = useFetchClients(parseInt(id));
   const values = {
     id: client.id,
     cliente: client.name,
@@ -34,12 +26,12 @@ export default function ClientDetail({}: Props) {
     setbutonAction(newAlignment);
   };
 
-  const { products } = useFetchProducts();
+  const { missionss, unmissables } = useFetchProducts();
 
   return (
     <div className="flex flex-col items-center justify-start w-screen px-2 py-2 gap-2">
       <div
-        className={`rounded-2xl flex flex-col items-start justify-center p-2 border-2 border-gray-600/50  w-full relative overflow-hidden`}
+        className={`rounded-xl flex flex-col items-start justify-center p-2 border-2 border-gray-600/50  w-full relative overflow-hidden`}
       >
         {Object.entries(values).map(([key, value], i) => (
           <Typography
@@ -47,9 +39,11 @@ export default function ClientDetail({}: Props) {
             variant="subtitle2"
             display="block"
             gutterBottom
-            className="text-gray-700 font-bold"
+            className="text-gray-700"
           >
-            {key.toUpperCase()}: {value}
+            <p className="">
+              <span className="font-bold">{key.toUpperCase()}</span>: {value}
+            </p>
           </Typography>
         ))}
       </div>
@@ -80,13 +74,13 @@ export default function ClientDetail({}: Props) {
       <div>
         {butonAction === "resumen" ? (
           <div className="flex flex-col gap-4">
-            <Resumen products={products} />
-            <Misiones products={products} />
+            <Misiones missionss={missionss} />
+            <Unmissables unmissables={unmissables} />
           </div>
         ) : (
           <div className="flex flex-col gap-4">
             <Promotions />
-            <Exchange />
+            <Exchange unmissables={unmissables} />
           </div>
         )}
       </div>

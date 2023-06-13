@@ -1,4 +1,5 @@
 import { Product } from "@/app/models/Product";
+import { Unmissable } from "@/app/models/Unmissable";
 import {
   TableContainer,
   Paper,
@@ -11,24 +12,17 @@ import {
 } from "@mui/material";
 
 type Props = {
-  products: Product[];
+  unmissables: Unmissable[];
 };
-export default function Resumen({ products }: Props) {
+export default function Unmissables({ unmissables }: Props) {
   return (
     <>
-      <p className="font-bold text-sm text-center">MISIONES</p>
+      <p className="font-bold text-sm text-center">IMPERDIBLES</p>
 
       <TableContainer component={Paper}>
         <Table sx={{ width: "100vw" }} size="small" aria-label="a dense table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center">SKU</TableCell>
-              <TableCell align="center">Detalle</TableCell>
-              <TableCell align="center">Cantidad</TableCell>
-            </TableRow>
-          </TableHead>
           <TableBody>
-            {products.slice(0, 6).map((row) => (
+            {unmissables.slice(0, 6).map((row) => (
               <TableRow
                 key={row.SKU}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -38,9 +32,6 @@ export default function Resumen({ products }: Props) {
                 </TableCell>
                 <TableCell size="small" align="left">
                   {row.detalle}
-                </TableCell>
-                <TableCell size="small" align="center">
-                  {row.quantity}
                 </TableCell>
               </TableRow>
             ))}
