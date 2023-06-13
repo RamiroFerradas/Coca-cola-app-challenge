@@ -8,7 +8,7 @@ function LayoutPages({ children }: { children: React.ReactNode }) {
   return (
     <div>
       {mobileScreen ? (
-        <main className="">
+        <main className="bg-white">
           <Navbar />
           <div className="pt-20">{children}</div>
           <Appbar />

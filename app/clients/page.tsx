@@ -12,6 +12,7 @@ import { Client } from "../models/Client";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Searchbar } from "../components";
 
 export default function Clients() {
   const router = useRouter();
@@ -23,20 +24,13 @@ export default function Clients() {
     client.name.toLowerCase().includes(searchCLient.toLowerCase())
   );
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchCLient(event.target.value);
-  };
   return (
     <Box className="w-full max-w-360 bg-white px-3">
-      <div className="border border-gray-900 my-1 rounded-md">
-        <input
-          type="text"
-          value={searchCLient}
-          onChange={handleSearch}
-          className="w-full p-2 border border-gray-300 rounded-md mb-4"
-          placeholder="Buscar clientes"
-        />
-      </div>
+      <Searchbar
+        search={searchCLient}
+        setSearch={setSearchCLient}
+        placeholder="Buscar cliente"
+      />
       <nav aria-label="main mailbox folders">
         <List>
           {filteredClients.map((client: Client) => (

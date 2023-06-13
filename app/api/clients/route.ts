@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import usersData from "./clients.json";
+import clientsData from "./clients.json";
 import { Client } from "@/app/models/Client";
 
 export async function GET(req: NextRequest, res: NextResponse) {
@@ -8,9 +8,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
     if (id) {
-      return getUserById(id);
+      return getClientById(id);
     } else {
-      return getAllUsers();
+      return getAllClients();
     }
   } catch (error: any) {
     console.error(error.message);
@@ -18,9 +18,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
   }
 }
 
-function getUserById(id: string) {
+function getClientById(id: string) {
   try {
-    const data: Client[] = usersData.clients;
+    const data: Client[] = clientsData.clients;
     const user = data.find((client) => client.id === parseInt(id));
 
     if (user) {
@@ -37,9 +37,9 @@ function getUserById(id: string) {
   }
 }
 
-function getAllUsers() {
+function getAllClients() {
   try {
-    const data: Client[] = usersData.clients;
+    const data: Client[] = clientsData.clients;
     return NextResponse.json(data);
   } catch (error: any) {
     console.error(error.message);

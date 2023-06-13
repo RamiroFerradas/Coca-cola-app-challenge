@@ -1,5 +1,5 @@
 export interface Mission {
   SKU: number;
-  detalle: string;
+  detail: string;
   quantity: string;
 }

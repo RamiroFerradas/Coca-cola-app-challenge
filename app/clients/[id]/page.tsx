@@ -5,6 +5,8 @@ import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { Unmissables, Misiones, Promotions, Exchange } from "./components";
+import CloseIcon from "@mui/icons-material/Close";
+import Link from "next/link";
 
 type Props = {};
 export default function ClientDetail({}: Props) {
@@ -33,19 +35,26 @@ export default function ClientDetail({}: Props) {
       <div
         className={`rounded-xl flex flex-col items-start justify-center p-2 border-2 border-gray-600/50  w-full relative overflow-hidden`}
       >
-        {Object.entries(values).map(([key, value], i) => (
-          <Typography
-            key={i}
-            variant="subtitle2"
-            display="block"
-            gutterBottom
-            className="text-gray-700"
-          >
-            <p className="">
-              <span className="font-bold">{key.toUpperCase()}</span>: {value}
-            </p>
-          </Typography>
-        ))}
+        <div>
+          {Object.entries(values).map(([key, value], i) => (
+            <Typography
+              key={i}
+              variant="subtitle2"
+              display="block"
+              gutterBottom
+              className="text-gray-700"
+            >
+              <p className="">
+                <span className="font-bold">{key.toUpperCase()}</span>: {value}
+              </p>
+            </Typography>
+          ))}
+        </div>
+        <div className="absolute top-0 right-0 p-2">
+          <Link href="/clients">
+            <CloseIcon className="text-gray-600 hover:text-gray-800 transition duration-300 cursor-pointer" />
+          </Link>
+        </div>
       </div>
 
       <ToggleButtonGroup

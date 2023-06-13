@@ -41,7 +41,7 @@ export default function Misiones({ missionss }: Props) {
                   {row.SKU}
                 </TableCell>
                 <TableCell size="small" align="left">
-                  {row.detalle}
+                  {row.detail}
                 </TableCell>
                 <TableCell size="small" align="center">
                   {row.quantity}

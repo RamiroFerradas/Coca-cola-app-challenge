@@ -6,6 +6,7 @@ import Tab from "@mui/material/Tab";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import LoginIcon from "@mui/icons-material/Login";
 import GroupsIcon from "@mui/icons-material/Groups";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 export default function Appbar() {
   const [value, setValue] = useState(0);
   const router = useRouter();
@@ -33,9 +34,9 @@ export default function Appbar() {
         aria-label="clients"
       />
       <Tab
-        icon={<PersonPinIcon />}
-        onClick={() => router.push("")}
-        aria-label="person"
+        icon={<FormatListBulletedIcon />}
+        onClick={() => router.push("/products")}
+        aria-label="products"
       />
       <Tab
         icon={<PersonPinIcon />}

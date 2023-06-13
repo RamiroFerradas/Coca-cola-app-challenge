@@ -31,7 +31,7 @@ export default function Unmissables({ unmissables }: Props) {
                   {row.SKU}
                 </TableCell>
                 <TableCell size="small" align="left">
-                  {row.detalle}
+                  {row.detail}
                 </TableCell>
               </TableRow>
             ))}

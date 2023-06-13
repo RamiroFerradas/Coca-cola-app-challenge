@@ -38,7 +38,7 @@ export default function Exchange({ unmissables }: Props) {
                   {row.SKU}
                 </TableCell>
                 <TableCell size="small" align="left">
-                  {row.detalle}
+                  {row.detail}
                 </TableCell>
                 <TableCell size="small" align="left">
                   {Math.floor(Math.random() * 5) + 1}
