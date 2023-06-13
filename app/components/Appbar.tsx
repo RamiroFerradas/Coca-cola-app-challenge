@@ -14,7 +14,6 @@ export default function Appbar() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  const pathname = usePathname();
 
   return (
     <Tabs
@@ -30,14 +29,6 @@ export default function Appbar() {
         },
       }}
       textColor="inherit"
-
-      // indicator={{
-      //   style: {
-      //     backgroundColor: "#ff3434",
-      //   },
-      // }}
-      // indicatorColor="secondary"
-      // textColor="primary"
     >
       <Tab
         icon={<LoginIcon />}
