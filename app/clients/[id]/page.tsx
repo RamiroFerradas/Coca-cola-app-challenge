@@ -6,6 +6,8 @@ import { useParams } from "next/navigation";
 import { useState } from "react";
 import Resumen from "./components/resumen";
 import Misiones from "./components/misiones";
+import Promotions from "./components/promotions";
+import Exchange from "./components/exchange";
 
 type Props = {};
 export default function ClientDetail({}: Props) {
@@ -59,10 +61,18 @@ export default function ClientDetail({}: Props) {
         onChange={handleChange}
         aria-label="Dynamics"
       >
-        <ToggleButton color="error" value="dynamics">
+        <ToggleButton
+          disabled={butonAction === "dynamics" ? true : false}
+          color="error"
+          value="dynamics"
+        >
           Dinamicas a ejecutar
         </ToggleButton>
-        <ToggleButton color="error" value="resumen">
+        <ToggleButton
+          disabled={butonAction === "resumen" ? true : false}
+          color="error"
+          value="resumen"
+        >
           Resumen app
         </ToggleButton>
       </ToggleButtonGroup>
@@ -74,7 +84,10 @@ export default function ClientDetail({}: Props) {
             <Misiones products={products} />
           </div>
         ) : (
-          <Misiones products={products} />
+          <div className="flex flex-col gap-4">
+            <Promotions />
+            <Exchange />
+          </div>
         )}
       </div>
     </div>

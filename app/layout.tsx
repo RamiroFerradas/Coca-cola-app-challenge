@@ -20,15 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <LayoutPages>
-          <AuthProvider>
-            <main className="">
-              <Navbar />
-              <div className="pt-20">{children}</div>
-              <Appbar />
-            </main>
-          </AuthProvider>
-        </LayoutPages>
+        <AuthProvider>
+          <LayoutPages>{children}</LayoutPages>
+        </AuthProvider>
       </body>
     </html>
   );
