@@ -1,16 +1,11 @@
 "use client";
 import { UseFetchClients } from "@/app/hooks";
-import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
-import {
-  List,
-  ListSubheader,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Collapse,
-} from "@mui/material";
+import useFetchProducts from "@/app/hooks/useFetchProducts";
+import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Resumen from "./components/resumen";
+import Misiones from "./components/misiones";
 
 type Props = {};
 export default function ClientDetail({}: Props) {
@@ -21,40 +16,68 @@ export default function ClientDetail({}: Props) {
   const handleClick = () => {
     setOpen(!open);
   };
+
+  console.log(client);
+  const values = {
+    id: client.id,
+    cliente: client.name,
+    canal: `${client.channel} ${client.gec}`,
+    direccion: "Avda. Sarmiento 45000",
+  };
+
+  const [butonAction, setbutonAction] = useState<string>("dynamics");
+  const handleChange = (
+    event: React.MouseEvent<HTMLElement>,
+    newAlignment: string
+  ) => {
+    setbutonAction(newAlignment);
+  };
+
+  const { products } = useFetchProducts();
+
   return (
-    <List
-      sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-      subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
-          Nested List Items
-        </ListSubheader>
-      }
-    >
-      <ListItemButton>
-        <ListItemIcon>{/* <SendIcon /> */}</ListItemIcon>
-        <ListItemText primary="Sent mail" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>{/* <DraftsIcon /> */}</ListItemIcon>
-        <ListItemText primary="Drafts" />
-      </ListItemButton>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>{/* <InboxIcon /> */}</ListItemIcon>
-        <ListItemText primary="Inbox" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
-        </List>
-      </Collapse>
-    </List>
+    <div className="flex flex-col items-center justify-start w-screen px-2 py-2 gap-2">
+      <div
+        className={`rounded-2xl flex flex-col items-start justify-center p-2 border-2 border-gray-600/50  w-full relative overflow-hidden`}
+      >
+        {Object.entries(values).map(([key, value], i) => (
+          <Typography
+            key={i}
+            variant="subtitle2"
+            display="block"
+            gutterBottom
+            className="text-gray-700 font-bold"
+          >
+            {key.toUpperCase()}: {value}
+          </Typography>
+        ))}
+      </div>
+
+      <ToggleButtonGroup
+        color="primary"
+        value={butonAction}
+        exclusive
+        onChange={handleChange}
+        aria-label="Dynamics"
+      >
+        <ToggleButton color="error" value="dynamics">
+          Dinamicas a ejecutar
+        </ToggleButton>
+        <ToggleButton color="error" value="resumen">
+          Resumen app
+        </ToggleButton>
+      </ToggleButtonGroup>
+
+      <div>
+        {butonAction === "resumen" ? (
+          <div className="flex flex-col gap-4">
+            <Resumen products={products} />
+            <Misiones products={products} />
+          </div>
+        ) : (
+          <Misiones products={products} />
+        )}
+      </div>
+    </div>
   );
 }

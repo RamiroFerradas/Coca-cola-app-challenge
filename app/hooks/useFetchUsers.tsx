@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { User } from "../models/User";
-import { getUsers } from "../services/users";
+import { fetchData } from "../services";
 
 function useFetchUsers() {
   const [users, setUsers] = useState<User[]>([]);
@@ -10,7 +10,7 @@ function useFetchUsers() {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await getUsers();
+      const res = await fetchData(`users`);
 
       setUsers(res);
     } catch (error) {

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getClientById, getClients } from "../services/clients";
 import { Client } from "../models/Client";
+import { fetchData, getClientById } from "../services";
 
 const UseFetchClients = (id?: number) => {
   const initialClient: Client = {
@@ -20,11 +20,11 @@ const UseFetchClients = (id?: number) => {
     try {
       setLoading(true);
       if (id) {
-        const fetchedClient = await getClientById(id);
-        setClient(fetchedClient as any);
+        const client = await getClientById(id);
+        setClient(client);
       } else {
-        const fetchedClients = await getClients();
-        setClients(fetchedClients);
+        const clients = await fetchData("clients");
+        setClients(clients);
       }
     } catch (error) {
       console.log(error);

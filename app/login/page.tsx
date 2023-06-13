@@ -13,17 +13,17 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start w-screen bg-gray-200 p-10 gap-10 h-[94.5vh]">
+    <div className="flex flex-col items-center justify-start w-screen bg-gray-200 p-10 gap-10">
       {!loading ? (
         <>
           <div
-            className={`rounded-2xl flex flex-col items-center justify-center p-10 border-4 border-gray-600 h-52 w-80 relative overflow-hidden`}
+            className={`rounded-2xl flex flex-col items-center justify-center p-10 border-4 border-gray-600 w-full h-52 relative overflow-hidden`}
           >
             <QrScann validateUser={validateUser} />
           </div>
           <div className={`text-center ${error ? `text-red-600` : ``}  `}>
             <div
-              className={`rounded-2xl w-80 flex items-center justify-center p-10 border-4 ${
+              className={`rounded-2xl w-full flex items-center justify-center p-10 border-4 ${
                 error
                   ? `border-red-600`
                   : userAuth.length
@@ -39,7 +39,7 @@ export default function Login() {
                 numInputs={5}
                 separator={<span> - </span>}
                 inputStyle={{
-                  width: "50px",
+                  width: "40px",
                   height: "50px",
                   backgroundColor: "transparent",
                   border: "none",

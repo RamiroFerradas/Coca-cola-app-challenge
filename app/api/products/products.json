@@ -1,0 +1,104 @@
+{
+  "products": [
+    {
+      "SKU": 1000412,
+      "detalle": "Aquarius Manzana 1,5 lts x6 unidades",
+      "quantity": "4/8"
+    },
+    {
+      "SKU": 1000231,
+      "detalle": "Coca-Cola Zero 2 lts x12 unidades",
+      "quantity": "3/12"
+    },
+    {
+      "SKU": 1000876,
+      "detalle": "Sprite 2,5 lts x4 unidades",
+      "quantity": "2/4"
+    },
+    {
+      "SKU": 1000598,
+      "detalle": "Fanta Naranja 1 lts x8 unidades",
+      "quantity": "6/8"
+    },
+    {
+      "SKU": 1000357,
+      "detalle": "Coca-Cola Light 500 ml x24 unidades",
+      "quantity": "18/24"
+    },
+    {
+      "SKU": 1000723,
+      "detalle": "Aquarius Limón 2 lts x10 unidades",
+      "quantity": "7/10"
+    },
+    {
+      "SKU": 1000104,
+      "detalle": "Schweppes Tónica 1,5 lts x6 unidades",
+      "quantity": "5/6"
+    },
+    {
+      "SKU": 1000439,
+      "detalle": "Coca-Cola Original 3 lts x3 unidades",
+      "quantity": "2/3"
+    },
+    {
+      "SKU": 1000912,
+      "detalle": "Sprite Zero 500 ml x20 unidades",
+      "quantity": "12/20"
+    },
+    {
+      "SKU": 1000655,
+      "detalle": "Fanta Uva 2 lts x8 unidades",
+      "quantity": "5/8"
+    },
+    {
+      "SKU": 1000298,
+      "detalle": "Coca-Cola Sin Cafeína 1,5 lts x6 unidades",
+      "quantity": "4/6"
+    },
+    {
+      "SKU": 1000796,
+      "detalle": "Aquarius Sandía 500 ml x24 unidades",
+      "quantity": "20/24"
+    },
+    {
+      "SKU": 1000131,
+      "detalle": "Schweppes Ginger Ale 2 lts x10 unidades",
+      "quantity": "8/10"
+    },
+    {
+      "SKU": 1000462,
+      "detalle": "Coca-Cola Light Sabor a Vainilla 2,5 lts x4 unidades",
+      "quantity": "3/4"
+    },
+    {
+      "SKU": 1000967,
+      "detalle": "Sprite Limón 1 lts x8 unidades",
+      "quantity": "6/8"
+    },
+    {
+      "SKU": 1000523,
+      "detalle": "Fanta Mandarina 500 ml x20 unidades",
+      "quantity": "15/20"
+    },
+    {
+      "SKU": 1000165,
+      "detalle": "Coca-Cola Energy 1,5 lts x6 unidades",
+      "quantity": "4/6"
+    },
+    {
+      "SKU": 1000831,
+      "detalle": "Aquarius Manzana Verde 3 lts x3 unidades",
+      "quantity": "2/3"
+    },
+    {
+      "SKU": 1000065,
+      "detalle": "Schweppes Ginger Ale Zero 500 ml x24 unidades",
+      "quantity": "7/10"
+    },
+    {
+      "SKU": 1000387,
+      "detalle": "Coca-Cola Original Sabor a Cereza 2 lts x10 unidades",
+      "quantity": "4/30"
+    }
+  ]
+}

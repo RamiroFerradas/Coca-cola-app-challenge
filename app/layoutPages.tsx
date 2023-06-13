@@ -1,5 +1,5 @@
 "use client";
-import Appbar from "./components/appbar/Appbar";
+import Appbar from "./components/Appbar";
 import { useScreen } from "./hooks";
 
 function LayoutPages({ children }: { children: React.ReactNode }) {

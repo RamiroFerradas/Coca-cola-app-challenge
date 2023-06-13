@@ -1,12 +1,9 @@
 "use client";
+import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import PhoneIcon from "@mui/icons-material/Phone";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
-import { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import LoginIcon from "@mui/icons-material/Login";
 import GroupsIcon from "@mui/icons-material/Groups";
 export default function Appbar() {
@@ -16,6 +13,7 @@ export default function Appbar() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+  const pathname = usePathname();
 
   return (
     <Tabs
