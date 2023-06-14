@@ -7,7 +7,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { useFetchClients } from "../hooks";
+import { useFetchClient } from "../hooks";
 import { Client } from "../models/Client";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
@@ -17,7 +17,7 @@ import Loader from "../components/Loader";
 
 export default function Clients() {
   const router = useRouter();
-  const { clients } = useFetchClients();
+  const { clients } = useFetchClient();
 
   const [searchCLient, setSearchCLient] = useState("");
 

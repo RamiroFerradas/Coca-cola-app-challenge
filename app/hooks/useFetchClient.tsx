@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Client } from "../models/Client";
 import { fetchData, getClientById } from "../services";
 
-export default function useFetchClients(id?: number) {
+export default function useFetchClient(id?: number) {
   const initialClient: Client = {
     id: 0,
     name: "",
@@ -15,7 +15,6 @@ export default function useFetchClients(id?: number) {
   const [clients, setClients] = useState<Client[]>([]);
   const [client, setClient] = useState<Client>(initialClient);
   const [loading, setLoading] = useState(false);
-
   const fetchClients = async () => {
     try {
       setLoading(true);

@@ -1,5 +1,5 @@
 "use client";
-import { useFetchClients } from "@/app/hooks";
+import { useFetchClient } from "@/app/hooks";
 import useFetchProducts from "@/app/hooks/useFetchProducts";
 import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { useParams } from "next/navigation";
@@ -13,7 +13,7 @@ type Props = {};
 export default function ClientDetail({}: Props) {
   const { id } = useParams();
 
-  const { client } = useFetchClients(parseInt(id));
+  const { client } = useFetchClient(parseInt(id));
   const { missionss, unmissables } = useFetchProducts();
   const values = {
     id: client.id,
