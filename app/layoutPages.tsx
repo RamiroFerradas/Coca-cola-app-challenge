@@ -1,7 +1,9 @@
 "use client";
+import { Typography } from "@mui/material";
 import { Appbar, Navbar } from "./components";
 import { AuthProvider } from "./context/authClientContext";
 import { useScreen } from "./hooks";
+// import "@fontsource/roboto/300.css";
 
 function LayoutPages({ children }: { children: React.ReactNode }) {
   const { mobileScreen } = useScreen();
@@ -16,7 +18,11 @@ function LayoutPages({ children }: { children: React.ReactNode }) {
             <Appbar />
           </main>
         ) : (
-          <h1>Versión exclusiva para celulares</h1>
+          <div className="h-screen bg-red-200 flex justify-center items-center">
+            <Typography variant="h4" gutterBottom>
+              Versión exclusiva para celulares
+            </Typography>
+          </div>
         )}
       </div>
     </AuthProvider>
