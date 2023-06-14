@@ -8,26 +8,18 @@ import { useScreen } from "./hooks";
 function LayoutPages({ children }: { children: React.ReactNode }) {
   const { mobileScreen } = useScreen();
 
-  return (
-    <AuthProvider>
-      {
-        <div>
-          {mobileScreen ? (
-            <main className="bg-white">
-              <Navbar />
-              <div className="py-[4.5rem]">{children}</div>
-              <Appbar />
-            </main>
-          ) : (
-            <div className="h-screen bg-red-200 flex justify-center items-center">
-              <Typography variant="h4" gutterBottom>
-                Versión exclusiva para celulares
-              </Typography>
-            </div>
-          )}
-        </div>
-      }
-    </AuthProvider>
+  return mobileScreen ? (
+    <main className="bg-white">
+      <Navbar />
+      <div className="py-[4.5rem]">{children}</div>
+      <Appbar />
+    </main>
+  ) : (
+    <div className="h-screen bg-red-200 flex justify-center items-center">
+      <Typography variant="h4" gutterBottom>
+        Versión exclusiva para celulares
+      </Typography>
+    </div>
   );
 }
 

@@ -68,7 +68,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     };
   }, [userAuth, password, error, loading, isAuthenticated, users]);
 
-  if (loading) return <Loader />;
+  if (!users.length) return <Loader />;
 
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };

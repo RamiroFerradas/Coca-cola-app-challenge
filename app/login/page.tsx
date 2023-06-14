@@ -23,7 +23,7 @@ export default function Login() {
     validateUser(code);
   };
 
-  if (!users.length) return <Loader />;
+  if (loading) return <Loader />;
 
   return (
     <div className="flex flex-col items-center justify-start w-screen p-10 gap-10">
