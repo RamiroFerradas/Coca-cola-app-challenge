@@ -201,7 +201,7 @@ export default function Profile({}: Props) {
           ))}
         </div>
       </List>
-      <Button onClick={() => logout()} variant="outlined" color="error">
+      <Button className="bg-red-500 w-full text-white" onClick={() => logout()}>
         CERRAR SESION
       </Button>
     </nav>
