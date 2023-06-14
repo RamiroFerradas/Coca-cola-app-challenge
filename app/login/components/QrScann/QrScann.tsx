@@ -9,6 +9,9 @@ export type QrScannProps = {
 };
 
 const QrScann: React.FC<QrScannProps> = ({ validateUser }) => {
+  const [selected, setSelected] = useState("environment");
+  const [startScan, setStartScan] = useState(false);
+  const [loadingScan, setLoadingScan] = useState(false);
   const [scan, setScan] = useState(false);
 
   const handleScan = (data: any) => {
@@ -17,6 +20,7 @@ const QrScann: React.FC<QrScannProps> = ({ validateUser }) => {
       validateUser(code);
     }
   };
+  console.log(selected);
 
   const handleError = (err: Error) => {
     console.error(err);
@@ -51,10 +55,14 @@ const QrScann: React.FC<QrScannProps> = ({ validateUser }) => {
         //   facingMode: "environment",
         // }}
         key="environment"
-        facingMode="environment"
         // style={{ width: "100%" }}
         chooseDeviceId="2"
+        facingMode={selected}
       />
+      <select onChange={(e) => setSelected(e.target.value)}>
+        <option value={"environment"}>Back Camera</option>
+        <option value={"user"}>Front Camera</option>
+      </select>
     </div>
   );
 };
