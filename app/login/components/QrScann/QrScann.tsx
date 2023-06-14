@@ -47,7 +47,7 @@ const QrScann: React.FC<QrScannProps> = ({ validateUser }) => {
     <div className="absolute">
       <QrReader
         ref={qrRef}
-        delay={100}
+        delay={1000}
         style={previewStyle}
         onError={handleError}
         onScan={handleScan}
