@@ -50,8 +50,10 @@ const QrScann: React.FC<QrScannProps> = ({ validateUser }) => {
         // constraints={{
         //   facingMode: "environment",
         // }}
+        key="environment"
         facingMode="environment"
         // style={{ width: "100%" }}
+        chooseDeviceId="2"
       />
     </div>
   );
