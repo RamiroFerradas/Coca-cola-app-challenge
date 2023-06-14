@@ -3,6 +3,8 @@ import OtpInput from "react18-input-otp";
 import { useAuth } from "../context/authClientContext";
 import QrScann from "./components/QrScann/QrScann";
 import Loader from "../components/Loader";
+import { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function Login() {
   const {
@@ -14,6 +16,7 @@ export default function Login() {
     isAuthenticated,
     users,
   } = useAuth();
+  const [scan, setScan] = useState(false);
 
   const handleChange = (enteredOtp: string) => {
     const code = parseInt(enteredOtp);
@@ -27,9 +30,21 @@ export default function Login() {
       {!loading ? (
         <>
           <div
-            className={`rounded-2xl flex flex-col items-center justify-center p-10 border-4 border-gray-600 w-full h-52 relative overflow-hidde`}
+            className={`rounded-2xl flex flex-col items-center justify-center p-10 border-4 border-gray-600 w-full h-52 relative overflow-hidden`}
           >
-            <QrScann validateUser={validateUser} />
+            {scan && (
+              <button
+                onClick={() => setScan(false)}
+                className="absolute right-0 top-0 z-50"
+              >
+                <CloseIcon className="text-red-600 font-bold" />
+              </button>
+            )}
+            <QrScann
+              scan={scan}
+              setScan={setScan}
+              validateUser={validateUser}
+            />
           </div>
           <div className={`text-center ${error ? `text-red-600` : ``}  `}>
             <div
