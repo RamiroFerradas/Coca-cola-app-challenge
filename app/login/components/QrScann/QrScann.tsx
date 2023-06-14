@@ -57,9 +57,8 @@ const QrScann: React.FC<QrScannProps> = ({ validateUser }) => {
         //   facingMode: "environment",
         // }}
         key="environment"
-        // style={{ width: "100%" }}
-        chooseDeviceId="2"
-        facingMode={selected}
+
+        // facingMode={selected}
       />
       <select onChange={(e) => setSelected(e.target.value)}>
         <option value={"environment"}>Back Camera</option>
