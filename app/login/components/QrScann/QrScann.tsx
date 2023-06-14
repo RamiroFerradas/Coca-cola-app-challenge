@@ -45,6 +45,9 @@ const QrScann: React.FC<QrScannProps> = ({ validateUser }) => {
         style={previewStyle}
         onError={handleError}
         onScan={handleScan}
+        constraints={{
+          facingMode: "environment",
+        }}
       />
     </div>
   );
