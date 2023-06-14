@@ -6,9 +6,10 @@ import {
   ListItem,
   Typography,
   ListItemButton,
+  Button,
 } from "@mui/material";
 import { useAuth } from "../context/authClientContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
@@ -21,10 +22,14 @@ import CloseIcon from "@mui/icons-material/Close";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowRight";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 export default function Profile({}: Props) {
-  const { userAuth, setUserAuth } = useAuth();
+  const router = useRouter();
+  const { userAuth, setUserAuth, logout, loading, isAuthenticated } = useAuth();
+
   const [edit, setEdit] = useState({
     Telefono: false,
     Email: false,
@@ -85,8 +90,7 @@ export default function Profile({}: Props) {
     });
   };
 
-  if (!userAuth.length) return <Loader />;
-
+  if (loading) return <Loader />;
   return (
     <nav aria-label="main mailbox folders" className="px-4">
       <Typography
@@ -197,6 +201,9 @@ export default function Profile({}: Props) {
           ))}
         </div>
       </List>
+      <Button onClick={() => logout()} variant="outlined" color="error">
+        CERRAR SESION
+      </Button>
     </nav>
   );
 }

@@ -7,13 +7,12 @@ import PersonPinIcon from "@mui/icons-material/PersonPin";
 import LoginIcon from "@mui/icons-material/Login";
 import GroupsIcon from "@mui/icons-material/Groups";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import { useAuth } from "../context/authClientContext";
 export default function Appbar() {
   const [value, setValue] = useState(0);
   const router = useRouter();
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+  const pathname = usePathname();
+  const { isAuthenticated } = useAuth();
 
   const tabs = [
     { label: "Login", icon: <LoginIcon />, path: "/login" },
@@ -22,7 +21,10 @@ export default function Appbar() {
     { label: "Profile", icon: <PersonPinIcon />, path: "/profile" },
   ];
 
-  const pathname = usePathname();
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
   useEffect(() => {
     const selectedTabIndex = tabs.findIndex((tab) => tab.path === pathname);
     setValue(selectedTabIndex);
@@ -50,6 +52,7 @@ export default function Appbar() {
           icon={tab.icon}
           aria-label={tab.label}
           onClick={() => router.push(tab.path)}
+          disabled={!isAuthenticated && index !== 0}
         />
       ))}
     </Tabs>

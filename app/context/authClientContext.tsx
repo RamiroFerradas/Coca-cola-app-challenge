@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useState, useContext, useMemo } from "react";
+import { createContext, useState, useContext, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "../models/User";
 import { useFetchUsers, useLocalStorage } from "../hooks";
@@ -13,6 +13,7 @@ interface AuthContextProps {
   loading: boolean;
   isAuthenticated: boolean;
   validateUser: (code: number) => void;
+  logout: () => void;
   setUserAuth: (user: User[]) => void;
 }
 
@@ -22,8 +23,16 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const router = useRouter();
   const { users, loading } = useFetchUsers();
   const [userAuth, setUserAuth] = useLocalStorage<User[]>("userAuth", []);
-  const [password, setPassword] = useState<number>(0);
+  const [password, setPassword] = useState<number>(0o0);
   const [error, setError] = useState<string>("");
+
+  const logout = () => {
+    router.push("/login");
+    setTimeout(() => {
+      setUserAuth([]);
+      setPassword(0o0);
+    }, 1);
+  };
 
   const validateUser = (code: number) => {
     setError("");
@@ -44,6 +53,9 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     }
   };
   const isAuthenticated = !!userAuth.length;
+  useEffect(() => {
+    if (!isAuthenticated) router.push("/login");
+  }, [isAuthenticated]);
 
   const data: AuthContextProps = useMemo(() => {
     return {
@@ -55,6 +67,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       isAuthenticated,
       users,
       setUserAuth,
+      logout,
     };
   }, [userAuth, password, error, loading, isAuthenticated, users]);
 
