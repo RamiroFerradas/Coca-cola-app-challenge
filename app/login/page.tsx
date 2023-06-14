@@ -27,7 +27,7 @@ export default function Login() {
       {!loading ? (
         <>
           <div
-            className={`rounded-2xl flex flex-col items-center justify-center p-10 border-4 border-gray-600 w-full h-52 relative overflow-hidden`}
+            className={`rounded-2xl flex flex-col items-center justify-center p-10 border-4 border-gray-600 w-full h-52 relative overflow-hidde`}
           >
             <QrScann validateUser={validateUser} />
           </div>
