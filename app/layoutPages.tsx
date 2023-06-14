@@ -10,21 +10,23 @@ function LayoutPages({ children }: { children: React.ReactNode }) {
 
   return (
     <AuthProvider>
-      <div>
-        {mobileScreen ? (
-          <main className="bg-white">
-            <Navbar />
-            <div className="py-[4.5rem]">{children}</div>
-            <Appbar />
-          </main>
-        ) : (
-          <div className="h-screen bg-red-200 flex justify-center items-center">
-            <Typography variant="h4" gutterBottom>
-              Versión exclusiva para celulares
-            </Typography>
-          </div>
-        )}
-      </div>
+      {
+        <div>
+          {mobileScreen ? (
+            <main className="bg-white">
+              <Navbar />
+              <div className="py-[4.5rem]">{children}</div>
+              <Appbar />
+            </main>
+          ) : (
+            <div className="h-screen bg-red-200 flex justify-center items-center">
+              <Typography variant="h4" gutterBottom>
+                Versión exclusiva para celulares
+              </Typography>
+            </div>
+          )}
+        </div>
+      }
     </AuthProvider>
   );
 }

@@ -13,10 +13,14 @@ import { Searchbar } from "../components";
 import { Product } from "../models/Product";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Loader from "../components/Loader";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../context/authClientContext";
 
 type Props = {};
 export default function Products({}: Props) {
-  const { products } = useFetchProducts();
+  const router = useRouter();
+  const { isAuthenticated } = useAuth();
+  const { products, loading } = useFetchProducts();
 
   const [searchProduct, setSearchProduct] = useState("");
 
@@ -24,9 +28,11 @@ export default function Products({}: Props) {
     product.detail.toLowerCase().includes(searchProduct.toLowerCase())
   );
 
-  if (!filteredProducts.length) return <Loader />;
+  if (loading) return <Loader />;
 
-  return (
+  return !isAuthenticated ? (
+    router.push("/login")
+  ) : (
     <Box className="w-full max-w-360 bg-white px-3">
       <Searchbar
         search={searchProduct}

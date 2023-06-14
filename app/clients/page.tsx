@@ -14,19 +14,23 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Searchbar } from "../components";
 import Loader from "../components/Loader";
+import { useAuth } from "../context/authClientContext";
 
 export default function Clients() {
   const router = useRouter();
-  const { clients } = useFetchClients();
+  const { isAuthenticated } = useAuth();
 
+  const { clients, loading } = useFetchClients();
   const [searchCLient, setSearchCLient] = useState("");
 
   const filteredClients = clients.filter((client: Client) =>
     client.name.toLowerCase().includes(searchCLient.toLowerCase())
   );
-  if (!filteredClients.length) return <Loader />;
+  if (loading) return <Loader />;
 
-  return (
+  return !isAuthenticated ? (
+    router.push("/login")
+  ) : (
     <Box className="w-full max-w-360 bg-white px-3">
       <Searchbar
         search={searchCLient}

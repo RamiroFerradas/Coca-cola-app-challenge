@@ -35,21 +35,20 @@ export default function Profile({}: Props) {
     Email: false,
   });
   const [editValue, setEditValue] = useState({
-    mobile: userAuth[0].mobile,
-    email: userAuth[0].email,
+    mobile: !userAuth.length ? userAuth[0]?.mobile : "",
+    email: !userAuth.length ? userAuth[0]?.email : "",
   });
 
   const userRender = [
     {
-      id: userAuth[0].id,
-      Nombre: userAuth[0].name,
-      Email: userAuth[0].email,
-      Telefono: userAuth[0].mobile,
-      Direccion: userAuth[0].address,
-      Ruta: userAuth[0].route,
+      id: userAuth[0]?.id,
+      Nombre: userAuth[0]?.name,
+      Email: userAuth[0]?.email,
+      Telefono: userAuth[0]?.mobile,
+      Direccion: userAuth[0]?.address,
+      Ruta: userAuth[0]?.route,
     },
   ];
-
   const footerButtons = [
     {
       icon: <CardGiftcardIcon />,
@@ -91,7 +90,10 @@ export default function Profile({}: Props) {
   };
 
   if (loading) return <Loader />;
-  return (
+
+  return !isAuthenticated ? (
+    router.push("/login")
+  ) : (
     <nav aria-label="main mailbox folders" className="px-4">
       <Typography
         variant="overline"
@@ -201,7 +203,10 @@ export default function Profile({}: Props) {
           ))}
         </div>
       </List>
-      <Button className="bg-red-500 w-full text-white" onClick={() => logout()}>
+      <Button
+        className="bg-red-500 w-full text-white z-50"
+        onClick={() => logout()}
+      >
         CERRAR SESION
       </Button>
     </nav>

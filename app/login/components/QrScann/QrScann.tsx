@@ -1,4 +1,3 @@
-"use client";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import { useRef, useState } from "react";
 import QrReader from "react-qr-reader";

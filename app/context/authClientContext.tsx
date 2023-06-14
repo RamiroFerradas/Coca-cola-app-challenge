@@ -26,12 +26,13 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const [password, setPassword] = useState<number>(0o0);
   const [error, setError] = useState<string>("");
 
+  const isAuthenticated = !!userAuth.length;
   const logout = () => {
     router.push("/login");
     setTimeout(() => {
       setUserAuth([]);
       setPassword(0o0);
-    }, 1);
+    }, 100);
   };
 
   const validateUser = (code: number) => {
@@ -52,10 +53,6 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       }
     }
   };
-  const isAuthenticated = !!userAuth.length;
-  useEffect(() => {
-    if (!isAuthenticated) router.push("/login");
-  }, [isAuthenticated]);
 
   const data: AuthContextProps = useMemo(() => {
     return {
@@ -71,7 +68,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     };
   }, [userAuth, password, error, loading, isAuthenticated, users]);
 
-  if (!users.length) return <Loader />;
+  if (!users.length || loading) return <Loader />;
 
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };

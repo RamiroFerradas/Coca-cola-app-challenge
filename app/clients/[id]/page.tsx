@@ -2,19 +2,23 @@
 import { useFetchClients } from "@/app/hooks";
 import useFetchProducts from "@/app/hooks/useFetchProducts";
 import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Unmissables, Misiones, Promotions, Exchange } from "./components";
 import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
 import Loader from "@/app/components/Loader";
+import { useAuth } from "@/app/context/authClientContext";
 
 type Props = {};
 export default function ClientDetail({}: Props) {
-  const { id } = useParams();
+  const router = useRouter();
+  const { isAuthenticated } = useAuth();
 
+  const { id } = useParams();
   const { client } = useFetchClients(parseInt(id));
-  const { missionss, unmissables } = useFetchProducts();
+
+  const { missionss, unmissables, loading } = useFetchProducts();
   const values = {
     id: client.id,
     cliente: client.name,
@@ -30,9 +34,11 @@ export default function ClientDetail({}: Props) {
     setButtonAction(newAlignment);
   };
 
-  if (!client || !missionss.length || !unmissables.length) return <Loader />;
+  if (!client || loading) return <Loader />;
 
-  return (
+  return !isAuthenticated ? (
+    router.push("/login")
+  ) : (
     <div className="flex flex-col items-center justify-start w-screen px-2 py-2 gap-2">
       <div
         className={`rounded-xl flex flex-col items-start justify-center p-2 border-2 border-gray-600/50  w-full relative overflow-hidden`}
