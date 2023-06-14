@@ -1,25 +1,31 @@
 "use client";
 import { Typography } from "@mui/material";
-import { AuthProvider } from "./context/authClientContext";
 import { useScreen } from "./hooks";
 import { Navbar, Appbar } from "./components";
+import { ThemeProvider } from "@material-tailwind/react";
 // import "@fontsource/roboto/300.css";
 
 function LayoutPages({ children }: { children: React.ReactNode }) {
   const { mobileScreen } = useScreen();
 
-  return mobileScreen ? (
-    <main className="bg-white">
-      <Navbar />
-      <div className="py-[4.5rem]">{children}</div>
-      <Appbar />
+  return (
+    <main>
+      <ThemeProvider>
+        {mobileScreen ? (
+          <div className="bg-white">
+            <Navbar />
+            <div className="py-[4.5rem]">{children}</div>
+            <Appbar />
+          </div>
+        ) : (
+          <div className="h-screen bg-red-200 flex justify-center items-center">
+            <Typography variant="h4" gutterBottom>
+              Versión exclusiva para celulares
+            </Typography>
+          </div>
+        )}
+      </ThemeProvider>
     </main>
-  ) : (
-    <div className="h-screen bg-red-200 flex justify-center items-center">
-      <Typography variant="h4" gutterBottom>
-        Versión exclusiva para celulares
-      </Typography>
-    </div>
   );
 }
 
