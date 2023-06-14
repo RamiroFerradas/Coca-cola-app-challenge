@@ -7,6 +7,7 @@ import {
   Typography,
   ListItemButton,
   Button,
+  ButtonGroup,
 } from "@mui/material";
 import { useAuth } from "../context/authClientContext";
 import { useEffect, useState } from "react";
@@ -203,12 +204,16 @@ export default function Profile({}: Props) {
           ))}
         </div>
       </List>
-      <Button
-        className="bg-red-500 w-full text-white z-50"
-        onClick={() => logout()}
-      >
-        CERRAR SESION
-      </Button>
+      <ButtonGroup variant="text" className="w-full">
+        <Button
+          className="bg-red-500 w-full"
+          variant="contained"
+          color="error"
+          onClick={() => logout()}
+        >
+          CERRAR SESION
+        </Button>
+      </ButtonGroup>
     </nav>
   );
 }
