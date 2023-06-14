@@ -1,5 +1,5 @@
-type Props = {};
-("use client");
+"use client";
+
 import { useEffect, useState } from "react";
 import { Client } from "../models/Client";
 import { fetchData, getClientById } from "../services";
