@@ -161,9 +161,7 @@ export default function Profile({}: Props) {
                         </button>
                       ) : (
                         <div className="flex gap-2">
-                          <button
-                            onClick={(event) => handleUpdateUser(event, key)}
-                          >
+                          <button onClick={() => handleUpdateUser(key)}>
                             <SaveOutlined />
                           </button>
                           <button
