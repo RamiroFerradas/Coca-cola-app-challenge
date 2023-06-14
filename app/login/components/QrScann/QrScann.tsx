@@ -1,7 +1,7 @@
 "use client";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import { useRef, useState } from "react";
-import QrReader from "react-qr-scanner";
+import QrReader from "react-qr-reader";
 
 type ValidateUserFunction = (code: number) => void;
 
@@ -36,6 +36,7 @@ const QrScann: React.FC<QrScannProps> = ({ validateUser }) => {
     alignItems: "center",
   };
   const qrRef = useRef(null);
+  console.log(qrRef);
   return !scan ? (
     <div
       className="flex flex-col justify-center items-center gap-3"
