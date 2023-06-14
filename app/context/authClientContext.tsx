@@ -3,24 +3,27 @@ import { createContext, useState, useContext, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "../models/User";
 import { useFetchUsers, useLocalStorage } from "../hooks";
+import Loader from "../components/Loader";
 
 interface AuthContextProps {
   userAuth: User[];
+  users: User[];
   password: number;
   error: string;
   loading: boolean;
   isAuthenticated: boolean;
   validateUser: (code: number) => void;
+  setUserAuth: (user: User[]) => void;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+  const router = useRouter();
+  const { users, loading } = useFetchUsers();
   const [userAuth, setUserAuth] = useLocalStorage<User[]>("userAuth", []);
   const [password, setPassword] = useState<number>(0);
   const [error, setError] = useState<string>("");
-  const router = useRouter();
-  const { users, loading } = useFetchUsers();
 
   const validateUser = (code: number) => {
     setError("");
@@ -50,8 +53,12 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       validateUser,
       loading,
       isAuthenticated,
+      users,
+      setUserAuth,
     };
-  }, [userAuth, password, error, loading, isAuthenticated]);
+  }, [userAuth, password, error, loading, isAuthenticated, users]);
+
+  if (!users.length) return <Loader />;
 
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };

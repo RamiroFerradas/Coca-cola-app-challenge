@@ -7,12 +7,14 @@ import { useState } from "react";
 import { Unmissables, Misiones, Promotions, Exchange } from "./components";
 import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
+import Loader from "@/app/components/Loader";
 
 type Props = {};
 export default function ClientDetail({}: Props) {
   const { id } = useParams();
 
   const { client } = useFetchClients(parseInt(id));
+  const { missionss, unmissables } = useFetchProducts();
   const values = {
     id: client.id,
     cliente: client.name,
@@ -20,15 +22,15 @@ export default function ClientDetail({}: Props) {
     direccion: "Avda. Sarmiento 45000",
   };
 
-  const [butonAction, setbutonAction] = useState<string>("dynamics");
+  const [buttonAction, setButtonAction] = useState<string>("dynamics");
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string
   ) => {
-    setbutonAction(newAlignment);
+    setButtonAction(newAlignment);
   };
 
-  const { missionss, unmissables } = useFetchProducts();
+  if (!client || !missionss.length || !unmissables.length) return <Loader />;
 
   return (
     <div className="flex flex-col items-center justify-start w-screen px-2 py-2 gap-2">
@@ -52,27 +54,27 @@ export default function ClientDetail({}: Props) {
         </div>
         <div className="absolute top-0 right-0 p-2">
           <Link href="/clients">
-            <CloseIcon className="text-gray-600 hover:text-gray-800 transition duration-300 cursor-pointer" />
+            <CloseIcon className="text-red-600 font-bold" />
           </Link>
         </div>
       </div>
 
       <ToggleButtonGroup
         color="primary"
-        value={butonAction}
+        value={buttonAction}
         exclusive
         onChange={handleChange}
         aria-label="Dynamics"
       >
         <ToggleButton
-          disabled={butonAction === "dynamics" ? true : false}
+          disabled={buttonAction === "dynamics" ? true : false}
           color="error"
           value="dynamics"
         >
           Dinamicas a ejecutar
         </ToggleButton>
         <ToggleButton
-          disabled={butonAction === "resumen" ? true : false}
+          disabled={buttonAction === "resumen" ? true : false}
           color="error"
           value="resumen"
         >
@@ -81,7 +83,7 @@ export default function ClientDetail({}: Props) {
       </ToggleButtonGroup>
 
       <div>
-        {butonAction === "resumen" ? (
+        {buttonAction === "resumen" ? (
           <div className="flex flex-col gap-4">
             <Misiones missionss={missionss} />
             <Unmissables unmissables={unmissables} />

@@ -34,7 +34,9 @@ export default function useFetchClients(id?: number) {
   };
 
   useEffect(() => {
-    fetchClients();
+    if (!clients.length) {
+      fetchClients();
+    }
   }, []);
 
   return { clients, loading, client };

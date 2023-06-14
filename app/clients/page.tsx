@@ -13,6 +13,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Searchbar } from "../components";
+import Loader from "../components/Loader";
 
 export default function Clients() {
   const router = useRouter();
@@ -23,6 +24,7 @@ export default function Clients() {
   const filteredClients = clients.filter((client: Client) =>
     client.name.toLowerCase().includes(searchCLient.toLowerCase())
   );
+  if (!filteredClients.length) return <Loader />;
 
   return (
     <Box className="w-full max-w-360 bg-white px-3">

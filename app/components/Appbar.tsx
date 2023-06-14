@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -15,6 +15,19 @@ export default function Appbar() {
     setValue(newValue);
   };
 
+  const tabs = [
+    { label: "Login", icon: <LoginIcon />, path: "/login" },
+    { label: "Clients", icon: <GroupsIcon />, path: "/clients" },
+    { label: "Products", icon: <FormatListBulletedIcon />, path: "/products" },
+    { label: "Profile", icon: <PersonPinIcon />, path: "/profile" },
+  ];
+
+  const pathname = usePathname();
+  useEffect(() => {
+    const selectedTabIndex = tabs.findIndex((tab) => tab.path === pathname);
+    setValue(selectedTabIndex);
+  }, [pathname]);
+
   return (
     <Tabs
       className="fixed bottom-0 bg-gray-300 text-center flex m-auto items-center justify-center w-screen gap-4"
@@ -25,31 +38,20 @@ export default function Appbar() {
       TabIndicatorProps={{
         style: {
           backgroundColor: "#ff3434",
-          height: "5px", // Ajusta el grosor del indicador aquí
+          height: "3px", // Ajusta el grosor del indicador aquí
         },
       }}
       textColor="inherit"
     >
-      <Tab
-        icon={<LoginIcon />}
-        onClick={() => router.push("/login")}
-        aria-label="login"
-      />
-      <Tab
-        icon={<GroupsIcon />}
-        onClick={() => router.push("/clients")}
-        aria-label="clients"
-      />
-      <Tab
-        icon={<FormatListBulletedIcon />}
-        onClick={() => router.push("/products")}
-        aria-label="products"
-      />
-      <Tab
-        icon={<PersonPinIcon />}
-        onClick={() => router.push("/profile")}
-        aria-label="profile"
-      />
+      {tabs.map((tab, index) => (
+        <Tab
+          key={index}
+          label={tab.label}
+          icon={tab.icon}
+          aria-label={tab.label}
+          onClick={() => router.push(tab.path)}
+        />
+      ))}
     </Tabs>
   );
 }

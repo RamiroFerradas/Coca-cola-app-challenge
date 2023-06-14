@@ -12,6 +12,7 @@ import {
 import { Searchbar } from "../components";
 import { Product } from "../models/Product";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import Loader from "../components/Loader";
 
 type Props = {};
 export default function Products({}: Props) {
@@ -22,6 +23,8 @@ export default function Products({}: Props) {
   const filteredProducts = products.filter((product: Product) =>
     product.detail.toLowerCase().includes(searchProduct.toLowerCase())
   );
+
+  if (!filteredProducts.length) return <Loader />;
 
   return (
     <Box className="w-full max-w-360 bg-white px-3">

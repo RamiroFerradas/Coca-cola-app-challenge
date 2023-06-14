@@ -54,7 +54,7 @@ export default function Promotions({}: Props) {
                     {Math.floor(Math.random() * 5) + 1}
                   </TableCell>
                   <TableCell size="small" align="center">
-                    <LocalShippingIcon />
+                    <LocalShippingIcon className="text-red-500" />
                   </TableCell>
                 </TableRow>
               ))}

@@ -5,4 +5,6 @@ export interface User {
   email: string;
   mobile: string;
   enabled: boolean;
+  address: string;
+  route: string;
 }

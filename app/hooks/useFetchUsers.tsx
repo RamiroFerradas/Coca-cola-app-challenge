@@ -21,7 +21,9 @@ export default function useFetchUsers() {
   };
 
   useEffect(() => {
-    fetchUsers();
+    if (!users.length) {
+      fetchUsers();
+    }
   }, []);
 
   return { users, loading };

@@ -2,15 +2,25 @@
 import OtpInput from "react18-input-otp";
 import { useAuth } from "../context/authClientContext";
 import QrScann from "./components/QrScann/QrScann";
+import Loader from "../components/Loader";
 
 export default function Login() {
-  const { userAuth, password, error, validateUser, loading, isAuthenticated } =
-    useAuth();
+  const {
+    userAuth,
+    password,
+    error,
+    validateUser,
+    loading,
+    isAuthenticated,
+    users,
+  } = useAuth();
 
   const handleChange = (enteredOtp: string) => {
     const code = parseInt(enteredOtp);
     validateUser(code);
   };
+
+  if (!users.length) return <Loader />;
 
   return (
     <div className="flex flex-col items-center justify-start w-screen p-10 gap-10">
