@@ -1,4 +1,5 @@
-export { default as Appbar } from "./Appbar";
-export { default as Navbar } from "./Navbar";
-export { default as Searchbar } from "./Searchbar";
+export { default as Loader } from "./loader";
+export { default as Navbar } from "./navbar";
+export { default as Searchbar } from "./searchbar";
+export { default as Appbar } from "./appbar";
 export * from "./index";

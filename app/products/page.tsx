@@ -9,10 +9,9 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { Searchbar } from "../components";
+import { Loader, Searchbar } from "../components";
 import { Product } from "../models/Product";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import Loader from "../components/Loader";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/authClientContext";
 

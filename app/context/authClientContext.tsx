@@ -3,7 +3,7 @@ import { createContext, useState, useContext, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "../models/User";
 import { useFetchUsers, useLocalStorage } from "../hooks";
-import Loader from "../components/Loader";
+import { Loader } from "../components";
 
 interface AuthContextProps {
   userAuth: User[];
@@ -13,6 +13,7 @@ interface AuthContextProps {
   loading: boolean;
   isAuthenticated: boolean;
   validateUser: (code: number) => void;
+  loadAuthUser: boolean;
   logout: () => void;
   setUserAuth: (user: User[]) => void;
 }
@@ -25,6 +26,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const [userAuth, setUserAuth] = useLocalStorage<User[]>("userAuth", []);
   const [password, setPassword] = useState<number>(0o0);
   const [error, setError] = useState<string>("");
+  const [loadAuthUser, setloadAuthUser] = useState(false);
 
   const isAuthenticated = !!userAuth.length;
   const logout = () => {
@@ -36,6 +38,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   };
 
   const validateUser = (code: number) => {
+    setloadAuthUser(true);
     setError("");
     setPassword(code);
 
@@ -52,6 +55,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
         setError("El código ingresado no pertenece a ningún usuario");
       }
     }
+    setloadAuthUser(false);
   };
 
   const data: AuthContextProps = useMemo(() => {
@@ -65,8 +69,17 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       users,
       setUserAuth,
       logout,
+      loadAuthUser,
     };
-  }, [userAuth, password, error, loading, isAuthenticated, users]);
+  }, [
+    userAuth,
+    password,
+    error,
+    loading,
+    isAuthenticated,
+    users,
+    loadAuthUser,
+  ]);
 
   if (!users.length) return <Loader />;
 

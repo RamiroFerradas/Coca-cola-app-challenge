@@ -1,8 +1,8 @@
 "use client";
 import { Typography } from "@mui/material";
-import { Appbar, Navbar } from "./components";
 import { AuthProvider } from "./context/authClientContext";
 import { useScreen } from "./hooks";
+import { Navbar, Appbar } from "./components";
 // import "@fontsource/roboto/300.css";
 
 function LayoutPages({ children }: { children: React.ReactNode }) {

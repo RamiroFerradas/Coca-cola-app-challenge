@@ -12,8 +12,7 @@ import { Client } from "../models/Client";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Searchbar } from "../components";
-import Loader from "../components/Loader";
+import { Loader, Searchbar } from "../components";
 import { useAuth } from "../context/authClientContext";
 
 export default function Clients() {

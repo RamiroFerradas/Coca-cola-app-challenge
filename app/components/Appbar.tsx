@@ -24,11 +24,15 @@ export default function Appbar() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+  const isClientsDetailPage = pathname.startsWith("/clients/");
 
   useEffect(() => {
-    const selectedTabIndex = tabs.findIndex((tab) => tab.path === pathname);
+    let selectedTabIndex = tabs.findIndex((tab) => tab.path === pathname);
+    if (isClientsDetailPage) {
+      selectedTabIndex = 1;
+    }
     setValue(selectedTabIndex);
-  }, [pathname]);
+  }, [pathname, isClientsDetailPage]);
 
   return (
     <Tabs

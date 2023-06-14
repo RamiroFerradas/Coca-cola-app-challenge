@@ -1,30 +1,12 @@
 "use client";
-import {
-  List,
-  ListItemIcon,
-  ListItemText,
-  ListItem,
-  Typography,
-  ListItemButton,
-  Button,
-  ButtonGroup,
-} from "@mui/material";
+import { List, Typography } from "@mui/material";
 import { useAuth } from "../context/authClientContext";
-import { useEffect, useState } from "react";
-import Loader from "../components/Loader";
-import PersonIcon from "@mui/icons-material/Person";
-import EmailIcon from "@mui/icons-material/Email";
-import PhoneIcon from "@mui/icons-material/Phone";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import ForkLeftIcon from "@mui/icons-material/ForkLeft";
-import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
-import { SaveOutlined } from "@mui/icons-material";
-import CloseIcon from "@mui/icons-material/Close";
-import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowRight";
-import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
-import Link from "next/link";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
+import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
+import { Loader } from "../components";
+import { FooterButtons, FieldUserData } from "./components";
 
 type Props = {};
 export default function Profile({}: Props) {
@@ -109,111 +91,14 @@ export default function Profile({}: Props) {
           <div key={i} className="flex gap-1 flex-col">
             {Object.entries(user)
               .slice(1)
-              .map(([key, value]) => {
-                const Telefono = key === "Telefono";
-                const Email = key === "Email";
-                const renderInput = key === "Email" || key === "Telefono";
-                const IconComponent =
-                  key === "Nombre"
-                    ? PersonIcon
-                    : Email
-                    ? EmailIcon
-                    : Telefono
-                    ? PhoneIcon
-                    : key === "Direccion"
-                    ? LocationOnIcon
-                    : key === "Ruta"
-                    ? ForkLeftIcon
-                    : null;
-
-                return (
-                  <ListItem
-                    className="border-2 border-gray-500/30 my-1 rounded-md py-2 px-3"
-                    disablePadding
-                    key={i++}
-                  >
-                    {(edit.Email && Email) || (edit.Telefono && Telefono) ? (
-                      <input
-                        className="w-full h-16 py-2 px-3 outline-none"
-                        autoFocus
-                        onChange={(event) => handleChange(event, key)}
-                        type={Telefono ? "number" : "text"}
-                        defaultValue={
-                          Telefono ? editValue.mobile : editValue.email
-                        }
-                      />
-                    ) : (
-                      <ListItemText>
-                        <div className="flex justify-start flex-row items-center w-full overflow-hidden">
-                          <div className="flex flex-row">
-                            <ListItemIcon>
-                              {IconComponent && <IconComponent />}
-                            </ListItemIcon>
-                          </div>
-                          <div>
-                            <ListItemText secondary={key} />
-                            <ListItemText primary={value} />
-                          </div>
-                        </div>
-                      </ListItemText>
-                    )}
-                    {renderInput ? (
-                      (!edit.Email && Email) || (!edit.Telefono && Telefono) ? (
-                        <button
-                          onClick={() =>
-                            setEdit({ ...edit, [key]: !edit[key] })
-                          }
-                        >
-                          <EditNoteOutlinedIcon />
-                        </button>
-                      ) : (
-                        <div className="flex gap-2">
-                          <button onClick={() => handleUpdateUser(key)}>
-                            <SaveOutlined />
-                          </button>
-                          <button
-                            onClick={() => {
-                              setEdit({ ...edit, [key]: false });
-                              setEditValue({ ...editValue, [key]: "" });
-                            }}
-                          >
-                            <CloseIcon className="text-red-500" />
-                          </button>
-                        </div>
-                      )
-                    ) : null}
-                  </ListItem>
-                );
-              })}
+              .map(([key, value]) => (
+                <FieldUserData key={i++} keyValue={key} value={value} />
+              ))}
           </div>
         ))}
-        <div className="flex flex-col">
-          {footerButtons.map((item, i) => (
-            <ListItemButton
-              key={i}
-              className="border-2 h-20 bg-gray-500/30 my-1 rounded-md py-2 px-3"
-            >
-              <ListItemIcon>{item.icon}</ListItemIcon>
 
-              <ListItemText primary={item.label} />
-
-              <ListItemIcon>
-                <KeyboardArrowLeftIcon fontSize="large" />
-              </ListItemIcon>
-            </ListItemButton>
-          ))}
-        </div>
+        <FooterButtons />
       </List>
-      <ButtonGroup variant="text" className="w-full">
-        <Button
-          className="bg-red-500 w-full"
-          variant="contained"
-          color="error"
-          onClick={() => logout()}
-        >
-          CERRAR SESION
-        </Button>
-      </ButtonGroup>
     </nav>
   );
 }

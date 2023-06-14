@@ -7,8 +7,8 @@ import { useState } from "react";
 import { Unmissables, Misiones, Promotions, Exchange } from "./components";
 import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
-import Loader from "@/app/components/Loader";
 import { useAuth } from "@/app/context/authClientContext";
+import { Loader } from "@/app/components";
 
 type Props = {};
 export default function ClientDetail({}: Props) {
