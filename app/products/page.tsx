@@ -13,8 +13,7 @@ import { Product } from "../models/Product";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/authClientContext";
-import Searchbar_ from "../components/searchbar_";
-import { Loader } from "../components";
+import { Loader, Searchbar } from "../components";
 type Props = {};
 export default function Products({}: Props) {
   const router = useRouter();
@@ -33,7 +32,7 @@ export default function Products({}: Props) {
     router.push("/login")
   ) : (
     <Box className="w-full max-w-360 bg-white px-3">
-      <Searchbar_
+      <Searchbar
         search={searchProduct}
         setSearch={setSearchProduct}
         placeholder="Buscar producto"

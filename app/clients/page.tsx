@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "../context/authClientContext";
 import { Loader } from "../components";
-import Searchbar_ from "../components/searchbar_";
+import Searchbar from "../components/searchbar";
 
 export default function Clients() {
   const router = useRouter();
@@ -32,7 +32,7 @@ export default function Clients() {
     router.push("/login")
   ) : (
     <Box className="w-full max-w-360 bg-white px-3">
-      <Searchbar_
+      <Searchbar
         search={searchCLient}
         setSearch={setSearchCLient}
         placeholder="Buscar cliente"

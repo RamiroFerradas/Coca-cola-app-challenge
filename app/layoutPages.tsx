@@ -2,8 +2,7 @@
 import { Typography } from "@mui/material";
 import { useScreen } from "./hooks";
 import { ThemeProvider } from "@material-tailwind/react";
-import Navbar_ from "./components/navbar_";
-import { Appbar } from "./components";
+import { Appbar, Navbar } from "./components";
 // import "@fontsource/roboto/300.css";
 
 function LayoutPages({ children }: { children: React.ReactNode }) {
@@ -14,7 +13,7 @@ function LayoutPages({ children }: { children: React.ReactNode }) {
       <ThemeProvider>
         {mobileScreen ? (
           <div className="bg-white">
-            <Navbar_ />
+            <Navbar />
             <div className="py-[4.5rem]">{children}</div>
             <Appbar />
           </div>
