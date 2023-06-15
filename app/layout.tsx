@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { AuthProvider } from "./context/authClientContext";
 import LayoutPages from "./layoutPages";
 import "./tailwind.globals.css";
@@ -17,6 +18,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+      </Head>
       <body className={inter.className}>
         <AuthProvider>
           <LayoutPages>{children}</LayoutPages>

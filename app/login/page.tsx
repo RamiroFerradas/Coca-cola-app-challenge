@@ -9,9 +9,10 @@ export default function Login() {
   if (loading) return <Loader />;
 
   return (
-    <div className="flex flex-col items-center justify-start w-screen p-10 gap-10">
+    <div className="flex flex-col items-center justify-between w-screen p-10 gap-10 h-[85vh]">
       <RenderQrScann />
       <RenderInput />
+
       <ImagesSlider />
     </div>
   );
