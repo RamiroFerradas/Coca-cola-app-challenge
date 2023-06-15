@@ -1,35 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![CanalCocaColaLogo](./public/assets/blive_header.png)
 
-## Getting Started
+# Prueba técnica - b.live
 
-First, run the development server:
+<span id="intro"></span>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Intro
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+En este coding challenge el objetivo es crear una app unicamente para mobiles que replique el funcionamiento del actual "Canal Coca Cola"(aplicacion exclusiva para vendedores de la linea de productos "Coca Cola"):
+Ejemplo a replicar:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<p align="left"><img height="200" src="./public/assets/example.jpg" alt="example" /><p>
+<span id="obj"></span>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Objetivos del Proyecto:
 
-## Learn More
+Construir el frontend en React que muestre la informacion que expone tu API sobre los clientes de cada usuario en el backend. Todo debe estar echo en React.
 
-To learn more about Next.js, take a look at the following resources:
+La tarea es construir un frontend que va a cargar diferente inforamcion a cerca de los clientes de un usuario, ademas una lisat de usuarios, la cual se consume de un json simulando una base de datos desde el backend.
+Debe haber una pantalla de login, la cual se ingrese con el codigo de un usuario particular extraido de la "base de datos", ademas se debe poder ingresar mediante el escaneo de un codigo qr que contenga un codigo de un usuario.
+Una vez ingresado renderizar los datos de canjes y estadisiticas de cada cliente.
+Por ultimo una pantalla de perfil del usuario.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<span id="stack"></span>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Stack
 
-## Deploy on Vercel
+- Next.js
+- Tailwind CSS
+- Git
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# Coca-cola-app-challenge
+  <span id="intro"></span>

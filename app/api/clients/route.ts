@@ -21,10 +21,10 @@ export async function GET(req: NextRequest, res: NextResponse) {
 function getClientById(id: string) {
   try {
     const data: Client[] = clientsData.clients;
-    const user = data.find((client) => client.id === parseInt(id));
+    const client = data.find((client) => client.id === parseInt(id));
 
-    if (user) {
-      return NextResponse.json(user);
+    if (client) {
+      return NextResponse.json(client);
     } else {
       return NextResponse.json(
         { error: "Usuario no encontrado" },

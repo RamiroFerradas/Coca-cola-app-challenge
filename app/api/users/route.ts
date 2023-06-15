@@ -13,13 +13,45 @@ export async function GET(req: NextRequest, res: NextResponse) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const data: User[] = usersData.users;
-    return NextResponse.json(data);
+    const { searchParams } = new URL(req.url);
+    const password = searchParams.get("password");
+
+    if (password) {
+      return getUserByPassword(parseInt(password, 10));
+    } else {
+      return getAllUsers();
+    }
   } catch (error: any) {
     console.error(error.message);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }
     );
+  }
+}
+
+function getAllUsers() {
+  try {
+    const data: User[] = usersData.users;
+    return NextResponse.json(data);
+  } catch (error: any) {
+    console.error(error.message);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+function getUserByPassword(password: number) {
+  try {
+    const data: User[] = usersData.users;
+    const user = data.find((user) => user.password === password);
+
+    if (user) {
+      return NextResponse.json(user);
+    } else {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+  } catch (error: any) {
+    console.error(error.message);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

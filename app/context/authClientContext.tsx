@@ -1,15 +1,13 @@
 "use client";
-import { createContext, useState, useContext, useMemo, useEffect } from "react";
+import { createContext, useState, useContext, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "../models/User";
-import { useFetchUsers, useLocalStorage } from "../hooks";
-import { Loader } from "../components";
+import { useLocalStorage } from "../hooks";
+import { getUserByPassword } from "../services/getUserByPassword";
 interface AuthContextProps {
   userAuth: User[];
-  users: User[];
   password: number;
   error: string;
-  loading: boolean;
   isAuthenticated: boolean;
   validateUser: (code: number) => void;
   loadAuthUser: boolean;
@@ -21,11 +19,10 @@ const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const router = useRouter();
-  const { users, loading } = useFetchUsers();
   const [userAuth, setUserAuth] = useLocalStorage<User[]>("userAuth", []);
   const [password, setPassword] = useState<number>(0o0);
   const [error, setError] = useState<string>("");
-  const [loadAuthUser, setloadAuthUser] = useState(false);
+  const [loadAuthUser, setLoadAuthUser] = useState(false);
 
   const isAuthenticated = !!userAuth.length;
   const logout = () => {
@@ -36,25 +33,29 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     }, 100);
   };
 
-  const validateUser = (code: number) => {
-    setloadAuthUser(true);
+  const validateUser = async (code: number) => {
+    setLoadAuthUser(true);
     setError("");
     setPassword(code);
 
-    const filteredUsers: User[] = users.filter(
-      (user) => user.password === code
-    );
-    if (filteredUsers.length && filteredUsers[0].password === code) {
-      const { password, ...userWithoutPassword } = filteredUsers[0];
-      setUserAuth([userWithoutPassword]);
-      router.push("/clients");
-    } else {
-      if (password.toString().length === 5) {
-        setUserAuth([]);
-        setError("El código ingresado no pertenece a ningún usuario");
+    try {
+      const user = await getUserByPassword(code);
+      if (user.id) {
+        const { password, ...userWithoutPassword } = user;
+        setUserAuth([userWithoutPassword]);
+        router.push("/clients");
+      } else {
+        if (password.toString().length === 5) {
+          setUserAuth([]);
+          setError("El código ingresado no pertenece a ningún usuario");
+        }
       }
+    } catch (error) {
+      console.error("Error validating user:", error);
+      setError("Error al validar el usuario");
     }
-    setloadAuthUser(false);
+
+    setLoadAuthUser(false);
   };
 
   const data: AuthContextProps = useMemo(() => {
@@ -63,24 +64,14 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       password,
       error,
       validateUser,
-      loading,
       isAuthenticated,
-      users,
       setUserAuth,
       logout,
       loadAuthUser,
     };
-  }, [
-    userAuth,
-    password,
-    error,
-    loading,
-    isAuthenticated,
-    users,
-    loadAuthUser,
-  ]);
+  }, [userAuth, password, error, isAuthenticated, loadAuthUser]);
 
-  if (!users.length) return <Loader />;
+  // if (!users.length) return <Loader />;
 
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };
