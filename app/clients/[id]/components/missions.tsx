@@ -23,29 +23,24 @@ export default function Missions({ missions, theme }: Props) {
           sx={{ width: "100vw" }}
           size="small"
           aria-label="a dense table"
-          className={`${
-            theme === "dark" ? "bg-gray-800 text-gray-200" : "bg-white"
-          }`}
+          className={`${theme === "dark" ? "bg-gray-800 " : "bg-white"}`}
         >
           <TableHead>
             <TableRow>
-              <TableCell
-                className={`${theme === "dark" && "text-white"}`}
-                align="center"
-              >
-                SKU
+              <TableCell align="center">
+                <span className={`${theme === "dark" && "text-gray-400"}`}>
+                  SKU
+                </span>
               </TableCell>
-              <TableCell
-                className={`${theme === "dark" && "text-white"}`}
-                align="center"
-              >
-                Detalle
+              <TableCell align="center">
+                <span className={`${theme === "dark" && "text-gray-400"}`}>
+                  Detalle
+                </span>
               </TableCell>
-              <TableCell
-                className={`${theme === "dark" && "text-white"}`}
-                align="center"
-              >
-                Cantidad
+              <TableCell align="center">
+                <span className={`${theme === "dark" && "text-gray-400"}`}>
+                  Cantidad
+                </span>
               </TableCell>
             </TableRow>
           </TableHead>
@@ -55,27 +50,20 @@ export default function Missions({ missions, theme }: Props) {
                 key={row.SKU}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell
-                  className={`${theme === "dark" && "text-white"}`}
-                  size="small"
-                  component="th"
-                  scope="row"
-                >
-                  {row.SKU}
+                <TableCell size="small" component="th" scope="row">
+                  <span className={`${theme === "dark" && "text-gray-200"}`}>
+                    {row.SKU}
+                  </span>
                 </TableCell>
-                <TableCell
-                  className={`${theme === "dark" && "text-white"}`}
-                  size="small"
-                  align="left"
-                >
-                  {row.detail}
+                <TableCell size="small" align="left">
+                  <span className={`${theme === "dark" && "text-gray-200"}`}>
+                    {row.detail}
+                  </span>
                 </TableCell>
-                <TableCell
-                  className={`${theme === "dark" && "text-white"}`}
-                  size="small"
-                  align="center"
-                >
-                  {row.quantity}
+                <TableCell size="small" align="center">
+                  <span className={`${theme === "dark" && "text-gray-200"}`}>
+                    {row.quantity}
+                  </span>
                 </TableCell>
               </TableRow>
             ))}

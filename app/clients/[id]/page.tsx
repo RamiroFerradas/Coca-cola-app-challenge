@@ -44,7 +44,9 @@ export default function ClientDetail({}: Props) {
     <div className="flex flex-col items-center justify-start w-screen px-2 gap-2">
       <div
         className={`rounded-xl flex flex-col items-start justify-center p-2 border-2 ${
-          theme === "dark" ? " border-gray-200/50" : " border-gray-600/50"
+          theme === "dark"
+            ? "bg-gray-900 border-gray-200/50"
+            : " border-gray-600/50"
         } w-full relative overflow-hidden`}
       >
         <div>
@@ -72,7 +74,7 @@ export default function ClientDetail({}: Props) {
       </div>
 
       <ToggleButtonGroup
-        color="primary"
+        color="error"
         value={buttonAction}
         exclusive
         onChange={handleChange}
@@ -82,17 +84,21 @@ export default function ClientDetail({}: Props) {
           disabled={buttonAction === "dynamics" ? true : false}
           color="error"
           value="dynamics"
-          className="text-gray-200"
+          className="enabled:text-red-500 disabled:text-white"
         >
-          Dinamicas a ejecutar
+          <span className="enabled:text-red-500 disabled:text-white">
+            Dinamicas a ejecutar
+          </span>
         </ToggleButton>
         <ToggleButton
           disabled={buttonAction === "resumen" ? true : false}
           color="error"
           value="resumen"
-          className="text-gray-200"
+          className="enabled:text-red-500 disabled:text-white"
         >
-          Resumen app
+          <span className="enabled:text-red-500 disabled:text-white">
+            Resumen app
+          </span>
         </ToggleButton>
       </ToggleButtonGroup>
 

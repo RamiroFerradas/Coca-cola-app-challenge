@@ -22,9 +22,7 @@ export default function Unmissables({ unmissables, theme }: Props) {
 
       <TableContainer component={Paper}>
         <Table
-          className={`${
-            theme === "dark" ? "bg-gray-800 text-gray-200" : "bg-white"
-          }`}
+          className={`${theme === "dark" ? "bg-gray-800 " : "bg-white"}`}
           sx={{ width: "100vw" }}
           size="small"
           aria-label="a dense table"
@@ -35,20 +33,15 @@ export default function Unmissables({ unmissables, theme }: Props) {
                 key={row.SKU}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell
-                  className={`${theme === "dark" && "text-white"}`}
-                  size="small"
-                  component="th"
-                  scope="row"
-                >
-                  {row.SKU}
+                <TableCell size="small" component="th" scope="row">
+                  <span className={`${theme === "dark" && "text-white"}`}>
+                    {row.SKU}
+                  </span>
                 </TableCell>
-                <TableCell
-                  className={`${theme === "dark" && "text-white"}`}
-                  size="small"
-                  align="left"
-                >
-                  {row.detail}
+                <TableCell size="small" align="left">
+                  <span className={`${theme === "dark" && "text-white"}`}>
+                    {row.detail}
+                  </span>
                 </TableCell>
               </TableRow>
             ))}

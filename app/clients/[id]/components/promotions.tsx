@@ -36,30 +36,22 @@ export default function Promotions({ theme }: Props) {
           sx={{ width: "100vw" }}
           size="small"
           aria-label="a dense table"
-          className={`${
-            theme === "dark" ? "bg-gray-800 text-gray-200" : "bg-white"
-          }`}
+          className={`${theme === "dark" ? "bg-gray-800" : "bg-white"}`}
         >
           <TableHead>
             <TableRow className="text-white">
               <TableCell align="center">
-                <span className={`${theme === "dark" && "text-white"}`}>
+                <span className={`${theme === "dark" && "text-gray-400"}`}>
                   Origen
                 </span>
               </TableCell>
-              <TableCell
-                className={`${theme === "dark" && "text-white"}`}
-                align="center"
-              >
-                <span className={`${theme === "dark" && "text-white"}`}>
+              <TableCell align="center">
+                <span className={`${theme === "dark" && "text-gray-400"}`}>
                   Cantidad
                 </span>
               </TableCell>
-              <TableCell
-                className={`${theme === "dark" && "text-white"}`}
-                align="center"
-              >
-                <span className={`${theme === "dark" && "text-white"}`}>
+              <TableCell align="center">
+                <span className={`${theme === "dark" && "text-gray-400"}`}>
                   Entregado
                 </span>
               </TableCell>
@@ -75,12 +67,12 @@ export default function Promotions({ theme }: Props) {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell size="small" component="th" scope="row">
-                    <span className={`${theme === "dark" && "text-white"}`}>
+                    <span className={`${theme === "dark" && "text-gray-200"}`}>
                       {row.dynamic}
                     </span>
                   </TableCell>
                   <TableCell size="small" align="center">
-                    <span className={`${theme === "dark" && "text-white"}`}>
+                    <span className={`${theme === "dark" && "text-gray-200"}`}>
                       {Math.floor(Math.random() * 5) + 1}
                     </span>
                   </TableCell>
