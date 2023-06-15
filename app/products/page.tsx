@@ -14,8 +14,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/authClientContext";
 import Searchbar_ from "../components/searchbar_";
-import Loader_ from "../components/loader_";
-
+import { Loader } from "../components";
 type Props = {};
 export default function Products({}: Props) {
   const router = useRouter();
@@ -28,7 +27,7 @@ export default function Products({}: Props) {
     product.detail.toLowerCase().includes(searchProduct.toLowerCase())
   );
 
-  if (loading) return <Loader_ />;
+  if (loading) return <Loader />;
 
   return !isAuthenticated ? (
     router.push("/login")

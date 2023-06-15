@@ -13,7 +13,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "../context/authClientContext";
-import Loader_ from "../components/loader_";
+import { Loader } from "../components";
 import Searchbar_ from "../components/searchbar_";
 
 export default function Clients() {
@@ -26,7 +26,7 @@ export default function Clients() {
   const filteredClients = clients.filter((client: Client) =>
     client.name.toLowerCase().includes(searchCLient.toLowerCase())
   );
-  if (loading) return <Loader_ />;
+  if (loading) return <Loader />;
 
   return !isAuthenticated ? (
     router.push("/login")

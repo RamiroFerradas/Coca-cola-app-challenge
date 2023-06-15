@@ -3,8 +3,7 @@ import { createContext, useState, useContext, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "../models/User";
 import { useFetchUsers, useLocalStorage } from "../hooks";
-import Loader_ from "../components/loader_";
-
+import { Loader } from "../components";
 interface AuthContextProps {
   userAuth: User[];
   users: User[];
@@ -81,7 +80,7 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     loadAuthUser,
   ]);
 
-  if (!users.length) return <Loader_ />;
+  if (!users.length) return <Loader />;
 
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };
