@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import { FooterButtons, FieldUserData } from "./components";
-import Loader from "../components/loader_";
+import Loader_ from "../components/loader_";
 
 type Props = {};
 export default function Profile({}: Props) {
@@ -72,7 +72,7 @@ export default function Profile({}: Props) {
     });
   };
 
-  if (loading) return <Loader />;
+  if (loading) return <Loader_ />;
 
   return !isAuthenticated ? (
     router.push("/login")

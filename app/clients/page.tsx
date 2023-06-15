@@ -13,8 +13,8 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "../context/authClientContext";
-import Loader from "../components/loader_";
-import Searchbar from "../components/searchbar_";
+import Loader_ from "../components/loader_";
+import Searchbar_ from "../components/searchbar_";
 
 export default function Clients() {
   const router = useRouter();
@@ -26,13 +26,13 @@ export default function Clients() {
   const filteredClients = clients.filter((client: Client) =>
     client.name.toLowerCase().includes(searchCLient.toLowerCase())
   );
-  if (loading) return <Loader />;
+  if (loading) return <Loader_ />;
 
   return !isAuthenticated ? (
     router.push("/login")
   ) : (
     <Box className="w-full max-w-360 bg-white px-3">
-      <Searchbar
+      <Searchbar_
         search={searchCLient}
         setSearch={setSearchCLient}
         placeholder="Buscar cliente"

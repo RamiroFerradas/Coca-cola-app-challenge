@@ -13,8 +13,8 @@ import { Product } from "../models/Product";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/authClientContext";
-import Searchbar from "../components/searchbar_";
-import Loader from "../components/loader_";
+import Searchbar_ from "../components/searchbar_";
+import Loader_ from "../components/loader_";
 
 type Props = {};
 export default function Products({}: Props) {
@@ -28,13 +28,13 @@ export default function Products({}: Props) {
     product.detail.toLowerCase().includes(searchProduct.toLowerCase())
   );
 
-  if (loading) return <Loader />;
+  if (loading) return <Loader_ />;
 
   return !isAuthenticated ? (
     router.push("/login")
   ) : (
     <Box className="w-full max-w-360 bg-white px-3">
-      <Searchbar
+      <Searchbar_
         search={searchProduct}
         setSearch={setSearchProduct}
         placeholder="Buscar producto"

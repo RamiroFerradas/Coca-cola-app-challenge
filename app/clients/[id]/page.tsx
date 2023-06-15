@@ -8,7 +8,7 @@ import { Unmissables, Misiones, Promotions, Exchange } from "./components";
 import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
 import { useAuth } from "@/app/context/authClientContext";
-import Loader from "@/app/components/loader_";
+import Loader_ from "@/app/components/loader_";
 
 type Props = {};
 export default function ClientDetail({}: Props) {
@@ -34,7 +34,7 @@ export default function ClientDetail({}: Props) {
     setButtonAction(newAlignment);
   };
 
-  if (!client || loading) return <Loader />;
+  if (!client || loading) return <Loader_ />;
 
   return !isAuthenticated ? (
     router.push("/login")
