@@ -1,9 +1,12 @@
 import { useAuth } from "@/app/context/authClientContext";
 import OtpInput from "react18-input-otp";
 import CheckIcon from "@mui/icons-material/Check";
+import { useTheme } from "@/app/context/themeContext";
 
 type Props = {};
-export default function RenderInput({}: Props) {
+export default function RenderInput() {
+  const { theme } = useTheme();
+
   const {
     userAuth,
     password,
@@ -33,13 +36,15 @@ export default function RenderInput({}: Props) {
             onChange={handleChange}
             numInputs={5}
             separator={<span> - </span>}
+            isInputNum
             inputStyle={{
               width: "40px",
               height: "50px",
               backgroundColor: "transparent",
               border: "none",
-              borderBottom: "1px solid black",
+              borderBottom: `1px solid ${theme === "dark" ? "white" : "black"}`,
             }}
+            className={`${theme === "dark" ? "text-white" : "text-black"}`}
           />
         </div>
       ) : (
