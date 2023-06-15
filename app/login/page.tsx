@@ -1,5 +1,5 @@
 "use client";
-import Loader from "../components/loader";
+import Loader from "../components/loader_";
 import { useAuth } from "../context/authClientContext";
 import { RenderInput, RenderQrScann } from "./components";
 export default function Login() {

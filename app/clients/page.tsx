@@ -13,8 +13,8 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "../context/authClientContext";
-import Loader from "../components/loader";
-import Searchbar from "../components/searchbar";
+import Loader from "../components/loader_";
+import Searchbar from "../components/searchbar_";
 
 export default function Clients() {
   const router = useRouter();

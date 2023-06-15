@@ -8,7 +8,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import GroupsIcon from "@mui/icons-material/Groups";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import { useAuth } from "../context/authClientContext";
-export default function Appbar() {
+export default function Appbar_() {
   const [value, setValue] = useState(0);
   const router = useRouter();
   const pathname = usePathname();

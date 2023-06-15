@@ -3,7 +3,7 @@ import { createContext, useState, useContext, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "../models/User";
 import { useFetchUsers, useLocalStorage } from "../hooks";
-import Loader from "../components/loader";
+import Loader from "../components/loader_";
 
 interface AuthContextProps {
   userAuth: User[];

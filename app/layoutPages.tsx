@@ -2,8 +2,8 @@
 import { Typography } from "@mui/material";
 import { useScreen } from "./hooks";
 import { ThemeProvider } from "@material-tailwind/react";
-import Navbar from "./components/navbar";
-import Appbar from "./components/appbar";
+import Navbar from "./components/navbar_";
+import Appbar from "./components/appbar_";
 // import "@fontsource/roboto/300.css";
 
 function LayoutPages({ children }: { children: React.ReactNode }) {

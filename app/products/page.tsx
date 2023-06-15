@@ -13,8 +13,8 @@ import { Product } from "../models/Product";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/authClientContext";
-import Searchbar from "../components/searchbar";
-import Loader from "../components/loader";
+import Searchbar from "../components/searchbar_";
+import Loader from "../components/loader_";
 
 type Props = {};
 export default function Products({}: Props) {
