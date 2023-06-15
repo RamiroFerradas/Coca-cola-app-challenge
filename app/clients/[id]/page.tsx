@@ -73,47 +73,53 @@ export default function ClientDetail({}: Props) {
         </div>
       </div>
 
-      <ToggleButtonGroup
-        color="error"
-        value={buttonAction}
-        exclusive
-        onChange={handleChange}
-        aria-label="Dynamics"
+      <div
+        className={`flex justify-center items-center flex-col ${
+          theme === "dark" && "bg-gray-900"
+        } rounded-xl`}
       >
-        <ToggleButton
-          disabled={buttonAction === "dynamics" ? true : false}
+        <ToggleButtonGroup
           color="error"
-          value="dynamics"
-          className="enabled:text-red-500 disabled:text-white"
+          value={buttonAction}
+          exclusive
+          onChange={handleChange}
+          aria-label="Dynamics"
         >
-          <span className="enabled:text-red-500 disabled:text-white">
-            Dinamicas a ejecutar
-          </span>
-        </ToggleButton>
-        <ToggleButton
-          disabled={buttonAction === "resumen" ? true : false}
-          color="error"
-          value="resumen"
-          className="enabled:text-red-500 disabled:text-white"
-        >
-          <span className="enabled:text-red-500 disabled:text-white">
-            Resumen app
-          </span>
-        </ToggleButton>
-      </ToggleButtonGroup>
+          <ToggleButton
+            disabled={buttonAction === "dynamics" ? true : false}
+            color="error"
+            value="dynamics"
+          >
+            <span className="enabled:text-red-500 disabled:text-white">
+              Dinamicas a ejecutar
+            </span>
+          </ToggleButton>
+          <ToggleButton
+            disabled={buttonAction === "resumen" ? true : false}
+            color="error"
+            value="resumen"
+          >
+            <span className="enabled:text-red-500 disabled:text-white">
+              Resumen app
+            </span>
+          </ToggleButton>
+        </ToggleButtonGroup>
 
-      <div className={`${theme === "dark" && "text-white"} overflow-y-scroll`}>
-        {buttonAction === "resumen" ? (
-          <div className="flex flex-col gap-4">
-            <Missions theme={theme} missions={missions} />
-            <Unmissables theme={theme} unmissables={unmissables} />
-          </div>
-        ) : (
-          <div className="flex flex-col gap-4">
-            <Promotions theme={theme} />
-            <Exchange theme={theme} unmissables={unmissables} />
-          </div>
-        )}
+        <div
+          className={`${theme === "dark" && "text-white"} overflow-y-scroll`}
+        >
+          {buttonAction === "resumen" ? (
+            <div className="flex flex-col gap-4">
+              <Missions theme={theme} missions={missions} />
+              <Unmissables theme={theme} unmissables={unmissables} />
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              <Promotions theme={theme} />
+              <Exchange theme={theme} unmissables={unmissables} />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

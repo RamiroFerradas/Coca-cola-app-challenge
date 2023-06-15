@@ -23,7 +23,7 @@ export default function Missions({ missions, theme }: Props) {
           sx={{ width: "100vw" }}
           size="small"
           aria-label="a dense table"
-          className={`${theme === "dark" ? "bg-gray-800 " : "bg-white"}`}
+          className={`${theme === "dark" ? "bg-gray-900" : "bg-white"}`}
         >
           <TableHead>
             <TableRow>

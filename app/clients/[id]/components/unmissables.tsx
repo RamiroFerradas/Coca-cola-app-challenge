@@ -22,7 +22,7 @@ export default function Unmissables({ unmissables, theme }: Props) {
 
       <TableContainer component={Paper}>
         <Table
-          className={`${theme === "dark" ? "bg-gray-800 " : "bg-white"}`}
+          className={`${theme === "dark" ? "bg-gray-900 " : "bg-white"}`}
           sx={{ width: "100vw" }}
           size="small"
           aria-label="a dense table"

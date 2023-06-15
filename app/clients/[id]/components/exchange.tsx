@@ -23,7 +23,7 @@ export default function Exchange({ unmissables, theme }: Props) {
       <TableContainer component={Paper}>
         <Table
           className={`${
-            theme === "dark" ? "bg-gray-800 text-gray-200" : "bg-white"
+            theme === "dark" ? "bg-gray-900 text-gray-200" : "bg-white"
           }`}
           sx={{ width: "100vw" }}
           size="small"
