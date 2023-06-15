@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import { useScreen } from "./hooks";
 import { ThemeProvider } from "@material-tailwind/react";
 import Navbar_ from "./components/navbar_";
-import Appbar_ from "./components/appbar_";
+import { Appbar } from "./components";
 // import "@fontsource/roboto/300.css";
 
 function LayoutPages({ children }: { children: React.ReactNode }) {
@@ -16,7 +16,7 @@ function LayoutPages({ children }: { children: React.ReactNode }) {
           <div className="bg-white">
             <Navbar_ />
             <div className="py-[4.5rem]">{children}</div>
-            <Appbar_ />
+            <Appbar />
           </div>
         ) : (
           <div className="h-screen bg-red-200 flex justify-center items-center">
