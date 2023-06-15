@@ -37,9 +37,9 @@ export default function FooterButtons({ theme }: Props) {
   return (
     <div className="flex flex-col">
       {footerButtons.map((item, i) => (
-        <ListItemButton
+        <div
           key={i}
-          className="border-2 h-20 bg-gray-500/30 my-1 rounded-md py-2 px-3"
+          className=" h-20 bg-gray-500/40 my-1 rounded-md py-2 px-3 flex items-center justify-center"
         >
           <ListItemIcon>{item.icon}</ListItemIcon>
 
@@ -54,7 +54,7 @@ export default function FooterButtons({ theme }: Props) {
               fontSize="large"
             />
           </ListItemIcon>
-        </ListItemButton>
+        </div>
       ))}
       <ButtonGroup variant="text" className="w-full">
         <Button

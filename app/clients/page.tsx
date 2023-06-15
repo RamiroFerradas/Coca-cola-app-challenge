@@ -58,8 +58,10 @@ export default function Clients() {
               onClick={() => router.push(`/clients/${client.id}`)}
             >
               <ListItemButton>
-                <ListItemIcon className={`${theme === "dark" && "text-white"}`}>
-                  <KeyboardArrowRightIcon />
+                <ListItemIcon>
+                  <KeyboardArrowRightIcon
+                    className={`${theme === "dark" && "text-white"}`}
+                  />
                 </ListItemIcon>
                 <div className="">
                   <ListItemText primary={client.name} />

@@ -42,23 +42,26 @@ export default function Promotions({ theme }: Props) {
         >
           <TableHead>
             <TableRow className="text-white">
-              <TableCell
-                className={`${theme === "dark" && "text-white"}`}
-                align="center"
-              >
-                Origen
+              <TableCell align="center">
+                <span className={`${theme === "dark" && "text-white"}`}>
+                  Origen
+                </span>
               </TableCell>
               <TableCell
                 className={`${theme === "dark" && "text-white"}`}
                 align="center"
               >
-                Cantidad
+                <span className={`${theme === "dark" && "text-white"}`}>
+                  Cantidad
+                </span>
               </TableCell>
               <TableCell
                 className={`${theme === "dark" && "text-white"}`}
                 align="center"
               >
-                Entregado
+                <span className={`${theme === "dark" && "text-white"}`}>
+                  Entregado
+                </span>
               </TableCell>
             </TableRow>
           </TableHead>
@@ -71,26 +74,17 @@ export default function Promotions({ theme }: Props) {
                   key={row.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell
-                    className={`${theme === "dark" && "text-white"}`}
-                    size="small"
-                    component="th"
-                    scope="row"
-                  >
-                    {row.dynamic}
+                  <TableCell size="small" component="th" scope="row">
+                    <span className={`${theme === "dark" && "text-white"}`}>
+                      {row.dynamic}
+                    </span>
                   </TableCell>
-                  <TableCell
-                    className={`${theme === "dark" && "text-white"}`}
-                    size="small"
-                    align="center"
-                  >
-                    {Math.floor(Math.random() * 5) + 1}
+                  <TableCell size="small" align="center">
+                    <span className={`${theme === "dark" && "text-white"}`}>
+                      {Math.floor(Math.random() * 5) + 1}
+                    </span>
                   </TableCell>
-                  <TableCell
-                    className={`${theme === "dark" && "text-white"}`}
-                    size="small"
-                    align="center"
-                  >
+                  <TableCell size="small" align="center">
                     <LocalShippingIcon className="text-red-500" />
                   </TableCell>
                 </TableRow>
