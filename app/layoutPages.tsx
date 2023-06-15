@@ -14,7 +14,7 @@ function LayoutPages({ children }: { children: React.ReactNode }) {
       {mobileScreen ? (
         <div className={theme !== "dark" ? "bg-white" : "bg-gray-800"}>
           <Navbar />
-          <div className="py-[4.2rem]">{children}</div>
+          <div className="py-[4.2rem] overflow-hidden h-screen">{children}</div>
           <Appbar />
         </div>
       ) : (

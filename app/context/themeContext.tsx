@@ -12,13 +12,10 @@ interface ThemeContextData {
 }
 
 const ThemeContext = createContext<ThemeContextData | undefined>(undefined);
-const initialTheme: Theme = "dark";
+const initialTheme: Theme = "light";
 
 const ThemeProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
-  const [theme, setTheme] = useLocalStorage<Theme>(
-    "theme",
-    initialTheme ? initialTheme : "dark"
-  );
+  const [theme, setTheme] = useLocalStorage<Theme>("theme", initialTheme);
   const [check, setCheck] = useLocalStorage<boolean>("check", true);
 
   const handleTheme = (e: React.SyntheticEvent, checked: boolean) => {
