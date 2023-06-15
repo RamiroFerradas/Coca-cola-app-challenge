@@ -3,6 +3,7 @@ import { AuthProvider } from "./context/authClientContext";
 import LayoutPages from "./layoutPages";
 import "./tailwind.globals.css";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "./context/themeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,22 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-        />
-      </Head>
       <body className={inter.className}>
-        <AuthProvider>
-          <LayoutPages>{children}</LayoutPages>
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <LayoutPages>{children}</LayoutPages>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

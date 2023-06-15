@@ -7,7 +7,7 @@ import { Unmissable } from "../models/Unmissable";
 
 export default function useFetchProducts() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [missionss, setMissionss] = useState<Mission[]>([]);
+  const [missions, setMissionss] = useState<Mission[]>([]);
   const [unmissables, setUnmissables] = useState<Unmissable[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -32,5 +32,5 @@ export default function useFetchProducts() {
     fetchProducts();
   }, []);
 
-  return { products, loading, missionss, unmissables };
+  return { products, loading, missions, unmissables };
 }

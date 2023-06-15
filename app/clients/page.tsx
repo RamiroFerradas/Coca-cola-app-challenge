@@ -15,8 +15,10 @@ import { useState } from "react";
 import { useAuth } from "../context/authClientContext";
 import { Loader } from "../components";
 import Searchbar from "../components/searchbar";
+import { useTheme } from "../context/themeContext";
 
 export default function Clients() {
+  const { theme } = useTheme();
   const router = useRouter();
   const { isAuthenticated } = useAuth();
 
@@ -31,28 +33,43 @@ export default function Clients() {
   return !isAuthenticated ? (
     router.push("/login")
   ) : (
-    <Box className="w-full max-w-360 bg-white px-3">
+    <Box
+      className={`w-full py-1 px-3 ${
+        theme === "dark" ? "bg-gray-800" : "bg-white"
+      }`}
+    >
       <Searchbar
         search={searchCLient}
         setSearch={setSearchCLient}
         placeholder="Buscar cliente"
       />
-      <nav aria-label="main mailbox folders">
+
+      <nav className="h-[77vh] overflow-y-auto">
         <List>
           {filteredClients.map((client: Client) => (
             <ListItem
-              className="border border-gray-900 my-1 rounded-md"
+              className={`${
+                theme === "dark"
+                  ? "border border-gray-200 text-gray-100 bg-gray-900"
+                  : "border border-gray-800"
+              } border  my-1 rounded-md`}
               disablePadding
               key={client.id}
               onClick={() => router.push(`/clients/${client.id}`)}
             >
               <ListItemButton>
-                <ListItemIcon>
+                <ListItemIcon className={`${theme === "dark" && "text-white"}`}>
                   <KeyboardArrowRightIcon />
                 </ListItemIcon>
                 <div className="">
                   <ListItemText primary={client.name} />
-                  <ListItemText secondary={client.address} />
+                  <ListItemText
+                    secondary={client.address}
+                    className="text-gray-400"
+                    secondaryTypographyProps={{
+                      color: `${theme !== "dark" && "#828181"}`,
+                    }}
+                  />
                 </div>
               </ListItemButton>
             </ListItem>

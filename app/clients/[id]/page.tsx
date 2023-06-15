@@ -4,11 +4,12 @@ import useFetchProducts from "@/app/hooks/useFetchProducts";
 import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
-import { Unmissables, Misiones, Promotions, Exchange } from "./components";
+import { Unmissables, Promotions, Exchange, Missions } from "./components";
 import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
 import { useAuth } from "@/app/context/authClientContext";
 import { Loader } from "@/app/components";
+import { useTheme } from "@/app/context/themeContext";
 
 type Props = {};
 export default function ClientDetail({}: Props) {
@@ -18,7 +19,7 @@ export default function ClientDetail({}: Props) {
   const { id } = useParams();
   const { client } = useFetchClients(parseInt(id));
 
-  const { missionss, unmissables, loading } = useFetchProducts();
+  const { missions, unmissables, loading } = useFetchProducts();
   const values = {
     id: client.id,
     cliente: client.name,
@@ -33,15 +34,18 @@ export default function ClientDetail({}: Props) {
   ) => {
     setButtonAction(newAlignment);
   };
+  const { theme } = useTheme();
 
   if (!client || loading) return <Loader />;
 
   return !isAuthenticated ? (
     router.push("/login")
   ) : (
-    <div className="flex flex-col items-center justify-start w-screen px-2 py-2 gap-2">
+    <div className="flex flex-col items-center justify-start w-screen px-2 gap-2">
       <div
-        className={`rounded-xl flex flex-col items-start justify-center p-2 border-2 border-gray-600/50  w-full relative overflow-hidden`}
+        className={`rounded-xl flex flex-col items-start justify-center p-2 border-2 ${
+          theme === "dark" ? " border-gray-200/50" : " border-gray-600/50"
+        } w-full relative overflow-hidden`}
       >
         <div>
           {Object.entries(values).map(([key, value], i) => (
@@ -50,7 +54,9 @@ export default function ClientDetail({}: Props) {
               variant="subtitle2"
               display="block"
               gutterBottom
-              className="text-gray-700"
+              className={`${
+                theme === "dark" ? "text-gray-100" : "text-gray-700"
+              }`}
             >
               <p className="">
                 <span className="font-bold">{key.toUpperCase()}</span>: {value}
@@ -76,6 +82,7 @@ export default function ClientDetail({}: Props) {
           disabled={buttonAction === "dynamics" ? true : false}
           color="error"
           value="dynamics"
+          className="text-gray-200"
         >
           Dinamicas a ejecutar
         </ToggleButton>
@@ -83,21 +90,22 @@ export default function ClientDetail({}: Props) {
           disabled={buttonAction === "resumen" ? true : false}
           color="error"
           value="resumen"
+          className="text-gray-200"
         >
           Resumen app
         </ToggleButton>
       </ToggleButtonGroup>
 
-      <div>
+      <div className={`${theme === "dark" && "text-white"} overflow-y-scroll`}>
         {buttonAction === "resumen" ? (
           <div className="flex flex-col gap-4">
-            <Misiones missionss={missionss} />
-            <Unmissables unmissables={unmissables} />
+            <Missions theme={theme} missions={missions} />
+            <Unmissables theme={theme} unmissables={unmissables} />
           </div>
         ) : (
           <div className="flex flex-col gap-4">
-            <Promotions />
-            <Exchange unmissables={unmissables} />
+            <Promotions theme={theme} />
+            <Exchange theme={theme} unmissables={unmissables} />
           </div>
         )}
       </div>

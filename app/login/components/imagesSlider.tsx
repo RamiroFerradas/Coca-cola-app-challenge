@@ -13,7 +13,7 @@ export default function ImagesSlider() {
   return (
     <Carousel
       transition={{ duration: 1 }}
-      className="rounded-xl flex items-center w-screen h-72"
+      className="rounded-xl flex items-center w-screen h-72 bg-white"
       autoplay
       loop
       navigation={({ setActiveIndex, activeIndex, length }) => (

@@ -1,9 +1,13 @@
+import { useTheme } from "../context/themeContext";
+
 type Props = {
   search: string;
   placeholder: string;
   setSearch: (value: string) => void;
 };
 export default function Searchbar({ search, placeholder, setSearch }: Props) {
+  const { theme } = useTheme();
+
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
@@ -13,7 +17,7 @@ export default function Searchbar({ search, placeholder, setSearch }: Props) {
         type="text"
         value={search}
         onChange={handleSearch}
-        className="w-full p-2 outline-none"
+        className="w-full p-2 outline-none bg-transparent"
         placeholder={placeholder}
       />
     </div>

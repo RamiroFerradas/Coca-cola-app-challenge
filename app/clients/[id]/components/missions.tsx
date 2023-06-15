@@ -1,33 +1,31 @@
-import { Unmissable } from "@/app/models/Unmissable";
+import { Mission } from "@/app/models/Mission";
 import {
   TableContainer,
   Paper,
   Table,
-  TableBody,
   TableRow,
   TableCell,
+  TableBody,
   TableHead,
 } from "@mui/material";
 
 type Props = {
-  unmissables: Unmissable[];
+  missions: Mission[];
   theme: "dark" | "light";
 };
-export default function Exchange({ unmissables, theme }: Props) {
+export default function Missions({ missions, theme }: Props) {
   return (
     <div>
-      <p className="font-bold text-sm text-center">
-        CANJE DE PREMIOS - App clientes
-      </p>
+      <p className="font-bold text-sm text-center">MISIONES</p>
 
       <TableContainer component={Paper}>
         <Table
-          className={`${
-            theme === "dark" ? "bg-gray-800 text-gray-200" : "bg-white"
-          }`}
           sx={{ width: "100vw" }}
           size="small"
           aria-label="a dense table"
+          className={`${
+            theme === "dark" ? "bg-gray-800 text-gray-200" : "bg-white"
+          }`}
         >
           <TableHead>
             <TableRow>
@@ -51,8 +49,8 @@ export default function Exchange({ unmissables, theme }: Props) {
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {unmissables.slice(0, 6).map((row) => (
+          <TableBody className="w-screen">
+            {missions.slice(0, 6).map((row) => (
               <TableRow
                 key={row.SKU}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -75,9 +73,9 @@ export default function Exchange({ unmissables, theme }: Props) {
                 <TableCell
                   className={`${theme === "dark" && "text-white"}`}
                   size="small"
-                  align="left"
+                  align="center"
                 >
-                  {Math.floor(Math.random() * 5) + 1}
+                  {row.quantity}
                 </TableCell>
               </TableRow>
             ))}

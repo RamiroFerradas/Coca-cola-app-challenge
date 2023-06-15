@@ -8,9 +8,11 @@ import {
   TableBody,
 } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-
-type Props = {};
-export default function Promotions({}: Props) {
+import { useTheme } from "@/app/context/themeContext";
+type Props = {
+  theme: "dark" | "light";
+};
+export default function Promotions({ theme }: Props) {
   const dynamics = [
     { id: 1, dynamic: "Dinamica 1 - Promo 20%" },
     { id: 2, dynamic: "Dinamica 2 - Promo 25%" },
@@ -24,18 +26,40 @@ export default function Promotions({}: Props) {
     { id: 10, dynamic: "Dinamica 10 - Promo 65%" },
   ];
   return (
-    <>
+    <div>
       <p className="font-bold text-sm text-center">
         PROMOCIONES QR web consumidores
       </p>
 
       <TableContainer component={Paper}>
-        <Table sx={{ width: "100vw" }} size="small" aria-label="a dense table">
+        <Table
+          sx={{ width: "100vw" }}
+          size="small"
+          aria-label="a dense table"
+          className={`${
+            theme === "dark" ? "bg-gray-800 text-gray-200" : "bg-white"
+          }`}
+        >
           <TableHead>
-            <TableRow>
-              <TableCell align="center">Origen</TableCell>
-              <TableCell align="center">Cantidad</TableCell>
-              <TableCell align="center">Entregado</TableCell>
+            <TableRow className="text-white">
+              <TableCell
+                className={`${theme === "dark" && "text-white"}`}
+                align="center"
+              >
+                Origen
+              </TableCell>
+              <TableCell
+                className={`${theme === "dark" && "text-white"}`}
+                align="center"
+              >
+                Cantidad
+              </TableCell>
+              <TableCell
+                className={`${theme === "dark" && "text-white"}`}
+                align="center"
+              >
+                Entregado
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -47,13 +71,26 @@ export default function Promotions({}: Props) {
                   key={row.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell size="small" component="th" scope="row">
+                  <TableCell
+                    className={`${theme === "dark" && "text-white"}`}
+                    size="small"
+                    component="th"
+                    scope="row"
+                  >
                     {row.dynamic}
                   </TableCell>
-                  <TableCell size="small" align="center">
+                  <TableCell
+                    className={`${theme === "dark" && "text-white"}`}
+                    size="small"
+                    align="center"
+                  >
                     {Math.floor(Math.random() * 5) + 1}
                   </TableCell>
-                  <TableCell size="small" align="center">
+                  <TableCell
+                    className={`${theme === "dark" && "text-white"}`}
+                    size="small"
+                    align="center"
+                  >
                     <LocalShippingIcon className="text-red-500" />
                   </TableCell>
                 </TableRow>
@@ -61,6 +98,6 @@ export default function Promotions({}: Props) {
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </div>
   );
 }

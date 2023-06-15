@@ -2,12 +2,16 @@ import { useAuth } from "@/app/context/authClientContext";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import QrScann from "./qrScann";
+import { useTheme } from "@/app/context/themeContext";
 
 type Props = {};
 export default function RenderQrScann({}: Props) {
   const [scan, setScan] = useState(false);
 
   const { userAuth, validateUser, isAuthenticated } = useAuth();
+  const { theme } = useTheme();
+
+  console.log(theme);
 
   return (
     <div
@@ -26,7 +30,11 @@ export default function RenderQrScann({}: Props) {
           <QrScann scan={scan} setScan={setScan} validateUser={validateUser} />
         </>
       ) : (
-        <div className="welcome-div font-bold text-2xl text-gray-800 transition-all">
+        <div
+          className={`font-bold text-2xl ${
+            theme === "dark" ? "text-white" : "text-gray-800"
+          }  transition-all`}
+        >
           <span>¡Bienvenido {userAuth[0].name}!</span>
         </div>
       )}

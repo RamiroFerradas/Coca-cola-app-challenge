@@ -13,24 +13,41 @@ import {
 
 type Props = {
   unmissables: Unmissable[];
+  theme: "dark" | "light";
 };
-export default function Unmissables({ unmissables }: Props) {
+export default function Unmissables({ unmissables, theme }: Props) {
   return (
     <>
       <p className="font-bold text-sm text-center">IMPERDIBLES</p>
 
       <TableContainer component={Paper}>
-        <Table sx={{ width: "100vw" }} size="small" aria-label="a dense table">
+        <Table
+          className={`${
+            theme === "dark" ? "bg-gray-800 text-gray-200" : "bg-white"
+          }`}
+          sx={{ width: "100vw" }}
+          size="small"
+          aria-label="a dense table"
+        >
           <TableBody>
             {unmissables.slice(0, 6).map((row) => (
               <TableRow
                 key={row.SKU}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell size="small" component="th" scope="row">
+                <TableCell
+                  className={`${theme === "dark" && "text-white"}`}
+                  size="small"
+                  component="th"
+                  scope="row"
+                >
                   {row.SKU}
                 </TableCell>
-                <TableCell size="small" align="left">
+                <TableCell
+                  className={`${theme === "dark" && "text-white"}`}
+                  size="small"
+                  align="left"
+                >
                   {row.detail}
                 </TableCell>
               </TableRow>
