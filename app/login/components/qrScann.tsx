@@ -1,5 +1,6 @@
 import { useTheme } from "@/app/context/themeContext";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
+import { useState } from "react";
 import QrReader from "react-qr-reader";
 
 type Props = {
@@ -24,12 +25,14 @@ export default function QrScann({ validateUser, scan, setScan }: Props) {
 
   const previewStyle = {
     height: 100,
-    width: 300,
+    width: 500,
     margin: "auto",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   };
+
+  const [data, setData] = useState("");
 
   return !scan ? (
     <div
@@ -58,8 +61,6 @@ export default function QrScann({ validateUser, scan, setScan }: Props) {
         style={previewStyle}
         onError={handleError}
         onScan={handleScan}
-
-        // facingMode={selected}
       />
     </div>
   );

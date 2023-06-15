@@ -1,6 +1,4 @@
-import { Client } from "../models/Client";
-import { Product } from "../models/Product";
-import { User } from "../models/User";
+const token = process.env.NEXT_PUBLIC_SECRET_TOKEN;
 
 const URL =
   process.env.NODE_ENV === "production"
@@ -9,7 +7,11 @@ const URL =
 
 export async function fetchData(path: string) {
   try {
-    const response = await fetch(`${URL}/${path}`);
+    const response = await fetch(`${URL}/${path}`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    });
     if (!response.ok) {
       throw new Error("Error fetching users");
     }
