@@ -19,11 +19,17 @@ export default function FooterButtons({ theme }: Props) {
 
   const footerButtons = [
     {
-      icon: <CardGiftcardIcon />,
+      icon: (
+        <CardGiftcardIcon
+          className={`${theme === "dark" && "text-gray-300"}`}
+        />
+      ),
       label: "Mis Puntos FEMSA",
     },
     {
-      icon: <HeadsetMicIcon />,
+      icon: (
+        <HeadsetMicIcon className={`${theme === "dark" && "text-gray-300"}`} />
+      ),
       label: "Contacto",
     },
   ];
@@ -33,19 +39,20 @@ export default function FooterButtons({ theme }: Props) {
       {footerButtons.map((item, i) => (
         <ListItemButton
           key={i}
-          className="border-2 h-20 bg-gray-500/30 my-1 rounded-md py-2 px-3 "
+          className="border-2 h-20 bg-gray-500/30 my-1 rounded-md py-2 px-3"
         >
-          <ListItemIcon className={`${theme === "dark" && "text-gray-300"}`}>
-            {item.icon}
-          </ListItemIcon>
+          <ListItemIcon>{item.icon}</ListItemIcon>
 
           <ListItemText
             className={`${theme === "dark" && "text-gray-300"}`}
             primary={item.label}
           />
 
-          <ListItemIcon className={`${theme === "dark" && "text-gray-300"}`}>
-            <KeyboardArrowLeftIcon fontSize="large" />
+          <ListItemIcon>
+            <KeyboardArrowLeftIcon
+              className={`${theme === "dark" && "text-gray-300"}`}
+              fontSize="large"
+            />
           </ListItemIcon>
         </ListItemButton>
       ))}

@@ -101,8 +101,12 @@ export default function FieldUserData({
         <ListItemText>
           <div className="flex justify-start flex-row items-center w-full overflow-hidden">
             <div className="flex flex-row">
-              <ListItemIcon className={`${theme === "dark" && "text-white"}`}>
-                {IconComponent && <IconComponent />}
+              <ListItemIcon>
+                {IconComponent && (
+                  <IconComponent
+                    className={`${theme === "dark" && "text-white"}`}
+                  />
+                )}
               </ListItemIcon>
             </div>
             <div>
