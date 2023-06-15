@@ -3,7 +3,7 @@ type Props = {
   placeholder: string;
   setSearch: (value: string) => void;
 };
-export default function Searchbar({ search, placeholder, setSearch }: Props) {
+export default function Searchbar_({ search, placeholder, setSearch }: Props) {
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
