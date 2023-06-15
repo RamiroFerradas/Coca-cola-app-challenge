@@ -1,7 +1,7 @@
 "use client";
+import Loader from "../components/loader";
 import { useAuth } from "../context/authClientContext";
 import { RenderInput, RenderQrScann } from "./components";
-import { Loader } from "../components";
 export default function Login() {
   const { loading } = useAuth();
 

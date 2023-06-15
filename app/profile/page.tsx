@@ -5,8 +5,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
-import { Loader } from "../components";
 import { FooterButtons, FieldUserData } from "./components";
+import Loader from "../components/loader";
 
 type Props = {};
 export default function Profile({}: Props) {

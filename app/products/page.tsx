@@ -9,11 +9,12 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { Loader, Searchbar } from "../components";
 import { Product } from "../models/Product";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/authClientContext";
+import Searchbar from "../components/searchbar";
+import Loader from "../components/loader";
 
 type Props = {};
 export default function Products({}: Props) {
