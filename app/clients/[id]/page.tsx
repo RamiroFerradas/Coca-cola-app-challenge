@@ -90,16 +90,24 @@ export default function ClientDetail({}: Props) {
             color="error"
             value="dynamics"
           >
-            <span className="enabled:text-red-500 disabled:text-white">
+            <span
+              className={
+                buttonAction !== "dynamics" ? "text-gray-500" : "text-red-500"
+              }
+            >
               Dinamicas a ejecutar
             </span>
           </ToggleButton>
           <ToggleButton
-            disabled={buttonAction === "resumen" ? true : false}
+            disabled={buttonAction === "resumen"}
             color="error"
             value="resumen"
           >
-            <span className="enabled:text-red-500 disabled:text-white">
+            <span
+              className={
+                buttonAction !== "resumen" ? "text-gray-500" : "text-red-500"
+              }
+            >
               Resumen app
             </span>
           </ToggleButton>

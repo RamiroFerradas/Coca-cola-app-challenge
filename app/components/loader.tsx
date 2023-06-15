@@ -7,7 +7,7 @@ export default function Loader() {
   return (
     <div
       className={`h-screen flex items-center justify-center ${
-        theme === "dark" ? "bg-gray-700" : "bg-white"
+        theme === "dark" ? "bg-gray-900" : "bg-white"
       }`}
     >
       <CircularProgress color="error" size="4rem" className="fixed" />
