@@ -9,14 +9,22 @@ import { useAuth } from "@/app/context/authClientContext";
 import { SaveOutlined } from "@mui/icons-material";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import CloseIcon from "@mui/icons-material/Close";
+import { User } from "@/app/models/User";
 
 type Props = {
   keyValue: string;
   value: string;
+  theme: "light" | "dark";
+  userAuth: User[];
+  setUserAuth: (user: User[]) => void;
 };
-export default function FieldUserData({ keyValue, value }: Props) {
-  const { userAuth, setUserAuth } = useAuth();
-
+export default function FieldUserData({
+  keyValue,
+  value,
+  theme,
+  userAuth,
+  setUserAuth,
+}: Props) {
   const Telefono = keyValue === "Telefono";
   const Email = keyValue === "Email";
   const renderInput = keyValue === "Email" || keyValue === "Telefono";
@@ -74,12 +82,16 @@ export default function FieldUserData({ keyValue, value }: Props) {
 
   return (
     <ListItem
-      className="border-2 border-gray-500/30 my-1 rounded-md py-2 px-3"
+      className={`border-2 ${
+        theme === "dark" && "bg-gray-900"
+      } border-gray-500/30 my-1 rounded-md py-2 px-3`}
       disablePadding
     >
       {(edit.Email && Email) || (edit.Telefono && Telefono) ? (
         <input
-          className="w-full h-16 py-2 px-3 outline-none"
+          className={`w-full h-16 py-2 px-3 outline-none bg-transparent ${
+            theme === "dark" && "text-white"
+          }`}
           autoFocus
           onChange={(event) => handleChange(event, keyValue)}
           type={Telefono ? "number" : "text"}
@@ -89,38 +101,50 @@ export default function FieldUserData({ keyValue, value }: Props) {
         <ListItemText>
           <div className="flex justify-start flex-row items-center w-full overflow-hidden">
             <div className="flex flex-row">
-              <ListItemIcon>{IconComponent && <IconComponent />}</ListItemIcon>
+              <ListItemIcon className={`${theme === "dark" && "text-white"}`}>
+                {IconComponent && <IconComponent />}
+              </ListItemIcon>
             </div>
             <div>
-              <ListItemText secondary={keyValue} />
-              <ListItemText primary={value} />
+              <ListItemText
+                secondary={keyValue}
+                secondaryTypographyProps={{
+                  color: `${theme === "dark" && "#828181"}`,
+                }}
+              />
+              <ListItemText
+                className={`${theme === "dark" && "text-white"}`}
+                primary={value}
+              />
             </div>
           </div>
         </ListItemText>
       )}
-      {renderInput ? (
-        (!edit.Email && Email) || (!edit.Telefono && Telefono) ? (
-          <button
-            onClick={() => setEdit({ ...edit, [keyValue]: !edit[keyValue] })}
-          >
-            <EditNoteOutlinedIcon />
-          </button>
-        ) : (
-          <div className="flex gap-2">
-            <button onClick={() => handleUpdateUser(keyValue)}>
-              <SaveOutlined />
-            </button>
+      <div className={`${theme === "dark" && "text-white"}`}>
+        {renderInput ? (
+          (!edit.Email && Email) || (!edit.Telefono && Telefono) ? (
             <button
-              onClick={() => {
-                setEdit({ ...edit, [keyValue]: false });
-                setEditValue({ ...editValue, [keyValue]: "" });
-              }}
+              onClick={() => setEdit({ ...edit, [keyValue]: !edit[keyValue] })}
             >
-              <CloseIcon className="text-red-500" />
+              <EditNoteOutlinedIcon />
             </button>
-          </div>
-        )
-      ) : null}
+          ) : (
+            <div className="flex gap-2">
+              <button onClick={() => handleUpdateUser(keyValue)}>
+                <SaveOutlined />
+              </button>
+              <button
+                onClick={() => {
+                  setEdit({ ...edit, [keyValue]: false });
+                  setEditValue({ ...editValue, [keyValue]: "" });
+                }}
+              >
+                <CloseIcon className="text-red-500" />
+              </button>
+            </div>
+          )
+        ) : null}
+      </div>
     </ListItem>
   );
 }

@@ -11,8 +11,10 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowRight";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import { useAuth } from "@/app/context/authClientContext";
 
-type Props = {};
-export default function FooterButtons({}: Props) {
+type Props = {
+  theme: "dark" | "light";
+};
+export default function FooterButtons({ theme }: Props) {
   const { logout } = useAuth();
 
   const footerButtons = [
@@ -31,13 +33,18 @@ export default function FooterButtons({}: Props) {
       {footerButtons.map((item, i) => (
         <ListItemButton
           key={i}
-          className="border-2 h-20 bg-gray-500/30 my-1 rounded-md py-2 px-3"
+          className="border-2 h-20 bg-gray-500/30 my-1 rounded-md py-2 px-3 "
         >
-          <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemIcon className={`${theme === "dark" && "text-gray-300"}`}>
+            {item.icon}
+          </ListItemIcon>
 
-          <ListItemText primary={item.label} />
+          <ListItemText
+            className={`${theme === "dark" && "text-gray-300"}`}
+            primary={item.label}
+          />
 
-          <ListItemIcon>
+          <ListItemIcon className={`${theme === "dark" && "text-gray-300"}`}>
             <KeyboardArrowLeftIcon fontSize="large" />
           </ListItemIcon>
         </ListItemButton>

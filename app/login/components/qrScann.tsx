@@ -1,3 +1,4 @@
+import { useTheme } from "@/app/context/themeContext";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import QrReader from "react-qr-reader";
 
@@ -7,6 +8,8 @@ type Props = {
   setScan: (value: boolean) => void;
 };
 export default function QrScann({ validateUser, scan, setScan }: Props) {
+  const { theme } = useTheme();
+
   const handleScan = (data: any) => {
     if (data) {
       const code = parseInt(data);
@@ -33,8 +36,20 @@ export default function QrScann({ validateUser, scan, setScan }: Props) {
       className="flex flex-col justify-center items-center gap-3"
       onClick={() => setScan(true)}
     >
-      <QrCodeScannerIcon fontSize="large" style={{ fontSize: "5rem" }} />
-      <p className="font-semibold text-lg">ESCANEAR QR CLIENTE</p>
+      <QrCodeScannerIcon
+        fontSize="large"
+        style={{
+          fontSize: "5rem",
+          color: `${theme === "dark" ? "#fff" : "#000"}`,
+        }}
+      />
+      <p
+        className={`${
+          theme === "dark" ? "text-white" : "text-gray-900"
+        } font-semibold text-lg`}
+      >
+        ESCANEAR QR CLIENTE
+      </p>
     </div>
   ) : (
     <div className="absolute">

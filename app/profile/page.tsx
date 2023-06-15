@@ -7,19 +7,14 @@ import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import { FooterButtons, FieldUserData } from "./components";
 import { Loader } from "../components";
-type Props = {};
-export default function Profile({}: Props) {
-  const router = useRouter();
-  const { userAuth, setUserAuth, logout, loading, isAuthenticated } = useAuth();
+import { useTheme } from "../context/themeContext";
 
-  const [edit, setEdit] = useState({
-    Telefono: false,
-    Email: false,
-  });
-  const [editValue, setEditValue] = useState({
-    mobile: !userAuth.length ? userAuth[0]?.mobile : "",
-    email: !userAuth.length ? userAuth[0]?.email : "",
-  });
+export default function Profile() {
+  const router = useRouter();
+
+  const { theme } = useTheme();
+
+  const { userAuth, setUserAuth, loading, isAuthenticated } = useAuth();
 
   const userRender = [
     {
@@ -31,55 +26,18 @@ export default function Profile({}: Props) {
       Ruta: userAuth[0]?.route,
     },
   ];
-  const footerButtons = [
-    {
-      icon: <CardGiftcardIcon />,
-      label: "Mis Puntos FEMSA",
-    },
-    {
-      icon: <HeadsetMicIcon />,
-      label: "Contacto",
-    },
-  ];
-
-  const handleUpdateUser = (key: string) => {
-    const updatedKey = key === "Email" ? "email" : "mobile";
-
-    const updatedUserAuth = userAuth.map((user) => {
-      if (user.id === userRender[0].id) {
-        return {
-          ...user,
-          [updatedKey]: editValue[updatedKey],
-        };
-      }
-      return user;
-    });
-
-    setUserAuth(updatedUserAuth);
-    setEdit({
-      ...edit,
-      [key]: false,
-    });
-  };
-  const handleChange = (event: any, key: string) => {
-    const { value } = event.target;
-    const updatedKey = key === "Email" ? "email" : "mobile";
-
-    setEditValue({
-      ...editValue,
-      [updatedKey]: value,
-    });
-  };
 
   if (loading) return <Loader />;
 
   return !isAuthenticated ? (
     router.push("/login")
   ) : (
-    <nav aria-label="main mailbox folders" className="px-4">
+    <nav aria-label="main mailbox folders" className="px-4 py-2">
       <Typography
         variant="overline"
-        className="text-center text-gray-700 font-semibold text-xl"
+        className={`text-center ${
+          theme === "dark" ? "text-gray-200" : "text-gray-700"
+        } font-semibold text-xl`}
         display="block"
         gutterBottom
       >
@@ -91,12 +49,19 @@ export default function Profile({}: Props) {
             {Object.entries(user)
               .slice(1)
               .map(([key, value]) => (
-                <FieldUserData key={i++} keyValue={key} value={value} />
+                <FieldUserData
+                  theme={theme}
+                  key={i++}
+                  keyValue={key}
+                  value={value}
+                  userAuth={userAuth}
+                  setUserAuth={setUserAuth}
+                />
               ))}
           </div>
         ))}
 
-        <FooterButtons />
+        <FooterButtons theme={theme} />
       </List>
     </nav>
   );
