@@ -28,14 +28,18 @@ function LayoutPages({ children }: { children: React.ReactNode }) {
           <Appbar />
         </div>
       ) : (
-        <div className="h-screen flex justify around items-center relative w-screen">
-          <div className="w-1/2 p-20">
-            <p className={`font-bold text-6xl font ${inter.className}`}>
+        <div className="h-screen justify-center flex items-center relative w-screen">
+          <div className="w-1/2 p-20 h-full flex justify-center items-center">
+            <p className={`font-bold text-6xl font  ${inter.className}`}>
               ¡App disponible únicamente para SmartPhones!
             </p>
           </div>
-          <div className="absolute right-0 bottom-0">
-            <Image src={onlySmartPhone} alt="onlysmartphone" />
+          <div className="relative w-1/2 h-full flex justify-center items-center">
+            <Image
+              className="absolute  right-0 bottom-0 "
+              src={onlySmartPhone}
+              alt="onlysmartphone"
+            />
           </div>
         </div>
       )}
