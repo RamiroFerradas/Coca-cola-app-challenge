@@ -1,5 +1,4 @@
-"use client";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useScreen() {
   const [mobileScreen, setMobileScreen] = useState<boolean>(false);
@@ -10,13 +9,15 @@ export default function useScreen() {
   };
 
   useEffect(() => {
-    handleResize();
+    if (typeof window !== "undefined") {
+      handleResize();
 
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [window.innerWidth]);
+      window.addEventListener("resize", handleResize);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []);
 
   return { mobileScreen };
 }
