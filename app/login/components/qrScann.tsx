@@ -32,11 +32,9 @@ export default function QrScann({ validateUser, scan, setScan }: Props) {
     alignItems: "center",
   };
 
-  const [data, setData] = useState("");
-
   return !scan ? (
     <div
-      className="flex flex-col justify-center items-center gap-3"
+      className="flex flex-col justify-center items-center gap-3 h-full"
       onClick={() => setScan(true)}
     >
       <QrCodeScannerIcon
@@ -49,7 +47,7 @@ export default function QrScann({ validateUser, scan, setScan }: Props) {
       <p
         className={`${
           theme === "dark" ? "text-white" : "text-gray-900"
-        } font-semibold text-lg`}
+        } font-semibold text-md text-center`}
       >
         ESCANEAR QR CLIENTE
       </p>

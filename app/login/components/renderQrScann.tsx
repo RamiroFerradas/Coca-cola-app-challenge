@@ -12,7 +12,7 @@ export default function RenderQrScann() {
 
   return (
     <div
-      className={`rounded-2xl flex flex-col items-center justify-center p-10 border-4 border-gray-600/30 shadow-xl w-full h-52 relative overflow-hidden ${
+      className={`rounded-2xl flex flex-col items-center justify-center p-10 border-4 border-gray-600/30 shadow-xl w-full h-2/4 relative overflow-hidden ${
         theme === "dark" && "bg-gray-900"
       } `}
     >

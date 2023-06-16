@@ -22,10 +22,10 @@ export default function RenderInput() {
   };
 
   return (
-    <div className={`text-center ${error ? `text-red-600` : ``} w-full `}>
+    <div className={`text-center ${error ? `text-red-600` : ``} w-full h-1/4 `}>
       {!isAuthenticated ? (
         <div
-          className={`rounded-2xl flex items-center px-20 justify-center h-32 border-4 ${
+          className={`rounded-2xl flex items-center px-20 justify-center border-4 h-full ${
             error ? `border-red-600` : `border-gray-600`
           } flex-col`}
         >
