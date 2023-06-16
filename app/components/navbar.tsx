@@ -4,7 +4,7 @@ import SwitchTheme from "./switch";
 
 export default function Navbar() {
   return (
-    <div className="bg-white/10 backdrop-blur-sm fixed flex justify-center items-center w-screen py-2 border-4 border-gray-700/50 rounded-br-3xl rounded-bl-3xl shadow-xl border-t-0 z-50 max-h-20 ">
+    <div className="bg-white/10 backdrop-blur-sm fixed flex justify-center items-center w-screen py-2 border-4 border-gray-700/50 rounded-br-3xl rounded-bl-3xl shadow-xl border-t-0 z-50 max-h-20 overflow-hidden">
       <Image height={50} src={logo} alt="logo" />
       <div className="absolute right-0">
         <SwitchTheme />
