@@ -38,17 +38,18 @@ export default function Appbar() {
 
   return (
     <Tabs
-      className={`fixed bottom-0 text-center flex m-auto items-center justify-center w-screen gap-4 z-50 ${
+      className={`fixed bottom-0 text-center flex m-auto items-center justify-center w-screen gap-4 overflow-y-scroll z-50 ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-300"
-      }`}
+      } `}
       value={value}
       onChange={handleChange}
       aria-label="icon tabs example"
       centered
+      variant="scrollable"
       TabIndicatorProps={{
         style: {
           backgroundColor: "#ff3434",
-          height: "3px", // Ajusta el grosor del indicador aquí
+          height: "3px",
         },
       }}
       textColor="inherit"
