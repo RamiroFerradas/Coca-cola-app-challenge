@@ -25,7 +25,7 @@ function LayoutPages({ children }: { children: React.ReactNode }) {
         <div
           className={`bg-${
             theme !== "dark" ? "white" : "gray-800"
-          } flex flex-col h-screen`}
+          } flex flex-col h-screen w-screen`}
         >
           <Navbar />
           <div className="flex-grow overflow-auto">{children}</div>
