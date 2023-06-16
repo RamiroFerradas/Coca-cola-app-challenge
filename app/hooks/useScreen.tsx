@@ -17,7 +17,7 @@ export default function useScreen() {
         window.removeEventListener("resize", handleResize);
       };
     }
-  }, []);
+  }, [window.innerWidth]);
 
   return { mobileScreen };
 }
