@@ -23,14 +23,12 @@ function LayoutPages({ children }: { children: React.ReactNode }) {
     <main>
       {mobileScreen ? (
         <div
-          className={
-            theme !== "dark"
-              ? "bg-white h-screen min-h-[94vh]"
-              : "bg-gray-800 min-h-[94vh]"
-          }
+          className={`bg-${
+            theme !== "dark" ? "white" : "gray-800"
+          } flex flex-col h-screen`}
         >
           <Navbar />
-          <div className="py-[4.2rem]">{children}</div>
+          <div className="flex-grow overflow-auto">{children}</div>
           <Appbar />
         </div>
       ) : (

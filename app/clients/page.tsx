@@ -34,7 +34,7 @@ export default function Clients() {
     router.push("/login")
   ) : (
     <Box
-      className={`w-full py-1 px-3 ${
+      className={`w-full h-full py-1 px-3 ${
         theme === "dark" ? "bg-gray-800" : "bg-white"
       }`}
     >
@@ -52,7 +52,7 @@ export default function Clients() {
                 theme === "dark"
                   ? "border border-gray-200 text-gray-100 bg-gray-900"
                   : "border border-gray-800"
-              } border  my-1 rounded-md`}
+              } border my-1 rounded-md`}
               disablePadding
               key={client.id}
               onClick={() => router.push(`/clients/${client.id}`)}
