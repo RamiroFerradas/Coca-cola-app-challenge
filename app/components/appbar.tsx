@@ -40,7 +40,7 @@ export default function Appbar() {
     <Tabs
       className={`relative bottom-0 text-center flex m-auto items-center justify-center w-screen gap-4 z-50 ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-300"
-      } h-20 `}
+      } h-16 `}
       value={value}
       onChange={handleChange}
       aria-label="icon tabs example"
@@ -49,7 +49,7 @@ export default function Appbar() {
       TabIndicatorProps={{
         style: {
           backgroundColor: "#ff3434",
-          height: "3px",
+          height: "8px",
         },
       }}
       textColor="inherit"
