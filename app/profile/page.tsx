@@ -32,7 +32,9 @@ export default function Profile() {
   return !isAuthenticated ? (
     router.push("/login")
   ) : (
-    <nav aria-label="main mailbox folders" className="px-4 py-2">
+    <div
+      className={`px-4 py-2 ${theme === "dark" && "bg-gray-800"} min-h-[80vh]`}
+    >
       <Typography
         variant="overline"
         className={`text-center ${
@@ -63,6 +65,6 @@ export default function Profile() {
 
         <FooterButtons theme={theme} />
       </List>
-    </nav>
+    </div>
   );
 }

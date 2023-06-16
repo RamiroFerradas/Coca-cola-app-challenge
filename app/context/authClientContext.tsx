@@ -34,11 +34,11 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   };
 
   const validateUser = async (code: number) => {
-    setLoadAuthUser(true);
-    setError("");
-    setPassword(code);
-
     try {
+      setLoadAuthUser(true);
+      setError("");
+      setPassword(code);
+
       const user = await getUserByPassword(code);
 
       if (Object.keys(user).length) {
@@ -54,9 +54,9 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
     } catch (error) {
       console.error("Error validating user:", error);
       setError("Error al validar el usuario");
+    } finally {
+      setLoadAuthUser(false);
     }
-
-    setLoadAuthUser(false);
   };
 
   const data: AuthContextProps = useMemo(() => {
