@@ -17,10 +17,10 @@ export default function Appbar() {
   const { isAuthenticated } = useAuth();
 
   const tabs = [
-    { label: "Login", icon: <LoginIcon />, path: "/login" },
-    { label: "Clients", icon: <GroupsIcon />, path: "/clients" },
-    { label: "Products", icon: <FormatListBulletedIcon />, path: "/products" },
-    { label: "Profile", icon: <PersonPinIcon />, path: "/profile" },
+    { label: "Ingreso", icon: <LoginIcon />, path: "/login" },
+    { label: "Clientes", icon: <GroupsIcon />, path: "/clients" },
+    { label: "Productos", icon: <FormatListBulletedIcon />, path: "/products" },
+    { label: "Perfil", icon: <PersonPinIcon />, path: "/profile" },
   ];
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
