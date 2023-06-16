@@ -12,9 +12,7 @@ export default function RenderInput() {
     password,
     error,
     validateUser,
-    loading,
     isAuthenticated,
-    users,
     loadAuthUser,
   } = useAuth();
 
