@@ -5,7 +5,7 @@ export default function useScreen() {
   const [loaderScreen, setLoaderScreen] = useState<boolean>(true);
 
   const handleResize = () => {
-    const isMobile = window.innerWidth < 1200;
+    const isMobile = window.innerWidth < 800;
     setMobileScreen(isMobile);
     setLoaderScreen(false);
   };
