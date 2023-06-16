@@ -22,10 +22,10 @@ export default function RenderInput() {
   };
 
   return (
-    <div className={`text-center ${error ? `text-red-600` : ``}  `}>
+    <div className={`text-center ${error ? `text-red-600` : ``} w-full `}>
       {!isAuthenticated ? (
         <div
-          className={`rounded-2xl w-screen flex items-center justify-center p-10 border-4 ${
+          className={`rounded-2xl flex items-center px-20 justify-center h-32 border-4 ${
             error ? `border-red-600` : `border-gray-600`
           } flex-col`}
         >
@@ -36,7 +36,7 @@ export default function RenderInput() {
             separator={<span> - </span>}
             isInputNum
             inputStyle={{
-              width: "40px",
+              width: "10vw",
               height: "50px",
               backgroundColor: "transparent",
               border: "none",
