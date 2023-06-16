@@ -55,7 +55,7 @@ export default function SwitchTheme() {
 
   return (
     <FormControlLabel
-      control={<MaterialUISwitch sx={{ m: 1 }} checked={check} />}
+      control={<MaterialUISwitch sx={{ m: 0 }} checked={check} />}
       label=""
       onChange={handleTheme}
     />
