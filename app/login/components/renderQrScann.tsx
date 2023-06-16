@@ -32,10 +32,9 @@ export default function RenderQrScann() {
         <div
           className={`font-bold text-2xl ${
             theme === "dark" ? "text-white" : "text-gray-800"
-          }  transition-all`}
+          }  transition-all text-center`}
         >
           <span>
-            {" "}
             ¡{isMale(userAuth[0].name) ? "Bienvenido" : "Bienvenida"}{" "}
             {userAuth[0].name}!
           </span>

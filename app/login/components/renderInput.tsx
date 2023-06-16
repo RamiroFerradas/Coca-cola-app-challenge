@@ -47,7 +47,7 @@ export default function RenderInput() {
         </div>
       ) : (
         <div
-          className={`rounded-2xl w-80 flex items-center justify-center p-10 flex-col h-20 bg-green-400 transition-all border-4 ${
+          className={`rounded-2xl flex items-center justify-center p-10 flex-col h-20 bg-green-400 transition-all border-4 ${
             loadAuthUser && `animate-pulse`
           }`}
         >
