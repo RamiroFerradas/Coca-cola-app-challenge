@@ -1,15 +1,17 @@
 "use client";
 import { Typography } from "@mui/material";
 import { useScreen } from "./hooks";
-import { Appbar, Navbar } from "./components";
+import { Appbar, Loader, Navbar } from "./components";
 import { ThemeProvider, useTheme } from "./context/themeContext";
 // import "@fontsource/roboto/300.css";
 
 function LayoutPages({ children }: { children: React.ReactNode }) {
-  const { mobileScreen } = useScreen();
+  const { mobileScreen, loaderScreen } = useScreen();
   const { theme } = useTheme();
 
-  return (
+  return loaderScreen ? (
+    <Loader />
+  ) : (
     <main>
       {mobileScreen ? (
         <div className={theme !== "dark" ? "bg-white" : "bg-gray-800"}>
