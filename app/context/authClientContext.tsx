@@ -40,14 +40,15 @@ const AuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
 
     try {
       const user = await getUserByPassword(code);
-      if (user.id) {
+
+      if (Object.keys(user).length) {
         const { password, ...userWithoutPassword } = user;
         setUserAuth([userWithoutPassword]);
         router.push("/clients");
       } else {
-        if (password.toString().length === 5) {
-          setUserAuth([]);
+        if (code.toString().length === 5) {
           setError("El código ingresado no pertenece a ningún usuario");
+          setUserAuth([]);
         }
       }
     } catch (error) {
