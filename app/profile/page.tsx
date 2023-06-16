@@ -14,7 +14,7 @@ export default function Profile() {
 
   const { theme } = useTheme();
 
-  const { userAuth, setUserAuth, loading, isAuthenticated } = useAuth();
+  const { userAuth, setUserAuth, isAuthenticated } = useAuth();
 
   const userRender = [
     {
@@ -27,7 +27,7 @@ export default function Profile() {
     },
   ];
 
-  if (loading) return <Loader />;
+  // if (loading) return <Loader />;
 
   return !isAuthenticated ? (
     router.push("/login")
