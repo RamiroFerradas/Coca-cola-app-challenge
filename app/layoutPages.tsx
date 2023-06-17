@@ -17,7 +17,7 @@ function LayoutPages({ children }: { children: React.ReactNode }) {
   const { mobileScreen, loaderScreen } = useScreen();
   const { theme } = useTheme();
 
-  return !loaderScreen ? (
+  return loaderScreen ? (
     <div className="h-screen">
       <Loader />
     </div>
