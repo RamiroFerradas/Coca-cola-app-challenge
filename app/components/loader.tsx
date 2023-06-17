@@ -6,7 +6,7 @@ export default function Loader() {
 
   return (
     <div
-      className={`h-screen flex items-center justify-center ${
+      className={`h-full flex items-center justify-center ${
         theme === "dark" ? "bg-gray-900" : "bg-white"
       }`}
     >

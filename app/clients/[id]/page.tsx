@@ -11,8 +11,7 @@ import { useAuth } from "@/app/context/authClientContext";
 import { Loader } from "@/app/components";
 import { useTheme } from "@/app/context/themeContext";
 
-type Props = {};
-export default function ClientDetail({}: Props) {
+export default function ClientDetail() {
   const router = useRouter();
   const { isAuthenticated } = useAuth();
 
@@ -41,7 +40,7 @@ export default function ClientDetail({}: Props) {
   return !isAuthenticated ? (
     router.push("/login")
   ) : (
-    <div className="flex flex-col items-center justify-start h-full w-screen px-2 gap-2">
+    <div className="flex flex-col items-center justify-start w-screen px-2 gap-2 overflow-hidden">
       <div
         className={`rounded-xl flex flex-col items-start justify-center p-2 border-2 ${
           theme === "dark"

@@ -34,7 +34,7 @@ export default function Clients() {
     router.push("/login")
   ) : (
     <Box
-      className={`w-full h-full py-1 px-3 ${
+      className={`w-full h-full py-1 px-3 overflow-hidden ${
         theme === "dark" ? "bg-gray-800" : "bg-white"
       }`}
     >
