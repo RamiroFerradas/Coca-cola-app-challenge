@@ -16,7 +16,7 @@ const initialTheme: Theme = "light";
 
 const ThemeProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const [theme, setTheme] = useLocalStorage<Theme>("theme", initialTheme);
-  const [check, setCheck] = useLocalStorage<boolean>("check", true);
+  const [check, setCheck] = useLocalStorage<boolean>("check", false);
 
   const handleTheme = (e: React.SyntheticEvent, checked: boolean) => {
     if (checked) {
