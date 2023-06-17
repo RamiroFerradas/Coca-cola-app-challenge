@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 export default function useScreen() {
   const [mobileScreen, setMobileScreen] = useState<boolean>(false);
   const [loaderScreen, setLoaderScreen] = useState<boolean>(true);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
 
   const handleResize = () => {
     const isMobile = window.innerWidth < 800;
     setMobileScreen(isMobile);
-    setWidth(window.innerWidth);
     setLoaderScreen(false);
+    setWidth(window.innerWidth);
   };
 
   useEffect(() => {
